@@ -20,7 +20,24 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xff3A3335),
+        accentColor: Color(0xff3A3335),
+        iconTheme: IconThemeData(
+          color: Color(0xffFDF0D5),
+        ),
+        backgroundColor: Color(0xffEB5E55),
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            color: Color(0xffFDF0D5),
+            fontWeight: FontWeight.bold,
+            fontSize: 150
+          ),
+          headline2: TextStyle(
+            color: Color(0xffFDF0D5),
+            fontWeight: FontWeight.normal,
+            fontSize: 100
+          ),
+        ),
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
@@ -72,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -102,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline1,
             ),
           ],
         ),
@@ -110,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.add ,color: Theme.of(context).iconTheme.color,),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
