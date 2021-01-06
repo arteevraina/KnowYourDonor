@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
+import 'package:knowyourdonor/constants/colors.dart';
 
 // Multipurpose Button for login and other tasks.
 Widget Button(
@@ -11,11 +12,13 @@ Widget Button(
     padding: EdgeInsets.symmetric(vertical: 20),
     width: MediaQuery.of(context).size.width,
     decoration: BoxDecoration(
-        color: backgroundColor, borderRadius: BorderRadius.circular(30)),
+      color: buttonColor,
+      borderRadius: BorderRadius.circular(30),
+    ),
     child: Center(
       child: Text(
         buttonText,
-        style: mediumTextStyle(),
+        style: buttonTextStyle(),
       ),
     ),
   );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
+import 'package:knowyourdonor/constants/colors.dart';
 
 // TextBox for Emails, Password, Phone Number
 Widget TextBox(
@@ -31,7 +32,9 @@ Widget TextBox(
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.blue),
+        borderSide: BorderSide(
+          color: textFieldBorderColor,
+        ),
         borderRadius: BorderRadius.all(
           Radius.circular(30),
         ),
