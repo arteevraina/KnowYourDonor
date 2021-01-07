@@ -5,15 +5,13 @@ import 'package:knowyourdonor/constants/colors.dart';
 TextStyle mediumTextStyle() {
   return GoogleFonts.josefinSlab(
     textStyle: TextStyle(
-      color: Colors.pink,
+      color: normalTextColor,
     ),
   );
 }
 
 TextStyle buttonTextStyle() {
   return GoogleFonts.josefinSlab(
-    textStyle: TextStyle(
-      color: buttonTextColor,
-    ),
-  );
+      textStyle: TextStyle(
+          color: buttonTextColor, fontSize: 30, fontWeight: FontWeight.bold));
 }
