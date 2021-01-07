@@ -26,7 +26,7 @@ Widget TextBox(
         ),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.red),
+        borderSide: BorderSide(color: errorTextColor),
         borderRadius: BorderRadius.all(
           Radius.circular(30),
         ),
@@ -41,7 +41,7 @@ Widget TextBox(
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: Colors.pink,
+          color: normalTextColor,
           width: 2,
         ),
         borderRadius: BorderRadius.all(

@@ -4,6 +4,8 @@ import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 
+import '../constants/colors.dart';
+
 // Stateful Widget that handles Login Tasks
 class LoginPage extends StatefulWidget {
   @override
@@ -29,63 +31,70 @@ class _LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.symmetric(
           horizontal: 20,
         ),
-        color: Colors.white,
+        color: backgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 200,
-              height: 200,
-              child: SvgPicture.asset(
-                'assets/drop.svg',
+            Expanded(
+              flex: 3,
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: SvgPicture.asset(
+                  'assets/drop.svg',
+                  color: errorTextColor,
+                ),
               ),
             ),
             SizedBox(
               height: 40,
             ),
-            Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextBox(
-                    context: context,
-                    hintText: "Phone Number",
-                    isPassword: false,
-                    inputController: _phoneNumberController,
-                    validator: phoneNumberValidator,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextBox(
-                    context: context,
-                    hintText: "Your Name",
-                    isPassword: false,
-                    inputController: _userNameController,
-                    validator: userNameValidator,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextBox(
-                    context: context,
-                    hintText: "Blood Group",
-                    isPassword: false,
-                    inputController: _bloodGroupController,
-                    validator: bloodGroupValidator,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  GestureDetector(
-                    onTap: signIn,
-                    child: Button(
+            Expanded(
+              flex: 2,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextBox(
                       context: context,
-                      buttonText: "Login",
+                      hintText: "Phone Number",
+                      isPassword: false,
+                      inputController: _phoneNumberController,
+                      validator: phoneNumberValidator,
                     ),
-                  )
-                ],
+                    SizedBox(
+                      height: 5,
+                    ),
+                    TextBox(
+                      context: context,
+                      hintText: "Your Name",
+                      isPassword: false,
+                      inputController: _userNameController,
+                      validator: userNameValidator,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    TextBox(
+                      context: context,
+                      hintText: "Blood Group",
+                      isPassword: false,
+                      inputController: _bloodGroupController,
+                      validator: bloodGroupValidator,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    GestureDetector(
+                      onTap: signIn,
+                      child: Button(
+                        context: context,
+                        buttonText: "Login",
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ],
