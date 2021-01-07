@@ -10,6 +10,13 @@ TextStyle mediumTextStyle() {
   );
 }
 
+TextStyle largeTextStyle() {
+  return GoogleFonts.josefinSlab(
+    textStyle: TextStyle(
+        color: normalTextColor, fontSize: 30, fontWeight: FontWeight.bold),
+  );
+}
+
 TextStyle buttonTextStyle() {
   return GoogleFonts.josefinSlab(
       textStyle: TextStyle(
