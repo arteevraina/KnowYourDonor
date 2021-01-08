@@ -7,12 +7,12 @@ import 'package:knowyourdonor/components/alertbox.dart';
 import '../constants/colors.dart';
 
 // Stateful Widget that handles Login Tasks
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
@@ -22,18 +22,6 @@ class _LoginPageState extends State<LoginPage> {
 
   void signIn() {
     print(_formKey.currentState.validate());
-  }
-
-  // ignore: unused_element
-  void _otpAlertBox(BuildContext context) {
-    showDialog(
-        context: context,
-        child: AlertBox(
-          context: context,
-          inputText: 'Enter OTP',
-          buttonText: 'Submit',
-          title: 'Enter OTP',
-        ));
   }
 
   @override
@@ -72,12 +60,22 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     TextBox(
                         context: context,
-                        hintText: "Phone Number",
+                        hintText: "Name",
                         isPassword: false,
                         inputController: _bloodGroupController,
                         validator: bloodGroupValidator,
                         fieldIcon: Icon(
-                          Icons.call,
+                          Icons.person,
+                          color: buttonColor,
+                        )),
+                    TextBox(
+                        context: context,
+                        hintText: "Blood Group",
+                        isPassword: false,
+                        inputController: _bloodGroupController,
+                        validator: bloodGroupValidator,
+                        fieldIcon: Icon(
+                          Icons.lock,
                           color: buttonColor,
                         )),
                     SizedBox(
@@ -85,11 +83,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        _otpAlertBox(context);
+                        // dummufunction()
                       },
                       child: Button(
                           context: context,
-                          buttonText: "Send OTP",
+                          buttonText: "Register",
                           colorDifference: 60),
                     )
                   ],
