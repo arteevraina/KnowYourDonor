@@ -20,21 +20,54 @@ class _LoginPageState extends State<LoginPage> {
   // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
   TextEditingController _phoneNumberController = TextEditingController();
+  TextEditingController _otpController = TextEditingController();
 
   void signIn() {
     print(_formKey.currentState.validate());
   }
 
-  // ignore: unused_element
   void _otpAlertBox(BuildContext context) {
     showDialog(
+      context: context,
+      child: AlertBox(
         context: context,
-        child: AlertBox(
-          context: context,
-          inputText: 'Enter OTP',
-          buttonText: 'Submit',
-          title: 'Enter OTP',
-        ));
+        inputText: 'Enter OTP',
+        buttonText: 'Submit',
+        title: 'Enter OTP',
+        inputController: _otpController,
+        gestureDetector: GestureDetector(
+          onTap: verifyOTP(context),
+          child: Button(
+            context: context,
+            buttonText: "Verify OTP",
+            colorDifference: 60,
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Function for verifyOTP
+  verifyOTP(BuildContext context) {
+    try {
+      Provider.of<AuthService>(
+        context,
+        listen: false,
+      ).verifyOTP(_otpController.text).then((value) {
+        print("Verify OTP");
+        Fluttertoast.showToast(
+          msg: "OTP Verified",
+          textColor: normalTextColor,
+          backgroundColor: buttonColor,
+        );
+      });
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: e.toString(),
+        textColor: errorTextColor,
+        backgroundColor: buttonColor,
+      );
+    }
   }
 
   sendOTP(BuildContext context) {
