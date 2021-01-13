@@ -30,6 +30,19 @@ dependencies:
   google_fonts: ^1.1.1
   flutter_svg: ^0.18.1
   rflutter_alert: ^1.1.0
+  # Add the dependency for the Firebase Core Flutter SDK
+  firebase_core: ^0.7.0
+  # Add the dependency for the FlutterFire plugin for Google Analytics
+  firebase_analytics: ^5.0.2
+  # Add the dependencies for any other Firebase products you want to use in your app
+  # For example, to use Firebase Authentication and Cloud Firestore
+  firebase_auth: ^0.20.0
+  google_sign_in: ^4.5.9
+  cloud_firestore: ^0.16.0
+  # provider package for state management
+  provider: ^4.3.2+3
+  # package for toast message
+  fluttertoast: ^7.1.6
 
 dev_dependencies:
   flutter_test:

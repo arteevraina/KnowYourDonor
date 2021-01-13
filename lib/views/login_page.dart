@@ -3,8 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
 import 'package:knowyourdonor/constants/validators.dart';
+import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/components/alertbox.dart';
-import '../constants/colors.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // Stateful Widget that handles Login Tasks
 class LoginPage extends StatefulWidget {
@@ -17,8 +20,6 @@ class _LoginPageState extends State<LoginPage> {
   // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
   TextEditingController _phoneNumberController = TextEditingController();
-  TextEditingController _userNameController = TextEditingController();
-  TextEditingController _bloodGroupController = TextEditingController();
 
   void signIn() {
     print(_formKey.currentState.validate());
@@ -34,6 +35,34 @@ class _LoginPageState extends State<LoginPage> {
           buttonText: 'Submit',
           title: 'Enter OTP',
         ));
+  }
+
+  sendOTP(BuildContext context) {
+    try {
+      Provider.of<AuthService>(
+        context,
+        listen: false,
+      ).verifyPhone("+91" + _phoneNumberController.text).then((value) {
+        _otpAlertBox(context);
+      }).catchError((e) {
+        String errorMsg = "Can't Authenticare you, Try Again Later";
+        if (e.toString().contains(
+            'We have blocked all requests from this device due to unusual activity. Try again later.')) {
+          errorMsg = "Please wait as you have exceeded you number requests";
+        }
+        Fluttertoast.showToast(
+          msg: errorMsg,
+          textColor: errorTextColor,
+          backgroundColor: buttonColor,
+        );
+      });
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: e.toString(),
+        textColor: errorTextColor,
+        backgroundColor: buttonColor,
+      );
+    }
   }
 
   @override
@@ -74,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                         context: context,
                         hintText: "Phone Number",
                         isPassword: false,
-                        inputController: _bloodGroupController,
+                        inputController: _phoneNumberController,
                         validator: bloodGroupValidator,
                         fieldIcon: Icon(
                           Icons.call,
@@ -85,12 +114,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        _otpAlertBox(context);
+                        sendOTP(context);
+                        print("Do something to verify the phone number");
                       },
                       child: Button(
-                          context: context,
-                          buttonText: "Send OTP",
-                          colorDifference: 60),
+                        context: context,
+                        buttonText: "Send OTP",
+                        colorDifference: 60,
+                      ),
                     )
                   ],
                 ),
