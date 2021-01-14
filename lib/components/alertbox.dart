@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
-import 'package:knowyourdonor/constants/validators.dart';
-import 'button.dart';
 import 'textbox.dart';
 
 // ignore: non_constant_identifier_names
