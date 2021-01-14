@@ -26,29 +26,8 @@ class _LoginPageState extends State<LoginPage> {
     print(_formKey.currentState.validate());
   }
 
-  void _otpAlertBox(BuildContext context) {
-    showDialog(
-      context: context,
-      child: AlertBox(
-        context: context,
-        inputText: 'Enter OTP',
-        buttonText: 'Submit',
-        title: 'Enter OTP',
-        inputController: _otpController,
-        gestureDetector: GestureDetector(
-          onTap: verifyOTP(context),
-          child: Button(
-            context: context,
-            buttonText: "Verify OTP",
-            colorDifference: 60,
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Function for verifyOTP
   verifyOTP(BuildContext context) {
+    print('verify called');
     try {
       Provider.of<AuthService>(
         context,
@@ -69,6 +48,31 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
   }
+
+  void _otpAlertBox(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertBox(
+            context: context,
+            inputText: 'Enter OTP',
+            buttonText: 'Submit',
+            title: 'Enter OTP',
+            inputController: _otpController,
+            gestureDetector: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: verifyOTP(context),
+              child: Button(
+                context: context,
+                buttonText: "Verify OTP",
+                colorDifference: 60,
+              ),
+            ),
+          );
+        });
+  }
+
+  // Function for verifyOTP
 
   sendOTP(BuildContext context) {
     try {
