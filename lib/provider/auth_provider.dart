@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+// Class for the Phone Auth Service.
 class AuthService with ChangeNotifier {
   final auth = FirebaseAuth.instance;
   String verificationId;
 
   Future<void> verifyPhone(String phoneNumber) async {
     final PhoneCodeSent smsOTPSent = (String verId, [int forceCodeResend]) {
+      print(verId + " **************");
       this.verificationId = verId;
     };
     try {
