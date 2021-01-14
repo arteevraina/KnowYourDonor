@@ -5,12 +5,14 @@ import 'button.dart';
 import 'textbox.dart';
 
 // ignore: non_constant_identifier_names
-Widget AlertBox(
-    {@required BuildContext context,
-    @required String inputText,
-    @required String buttonText,
-    @required String title,
-    TextEditingController inputController}) {
+Widget AlertBox({
+  @required BuildContext context,
+  @required String inputText,
+  @required String buttonText,
+  @required String title,
+  @required TextEditingController inputController,
+  @required GestureDetector gestureDetector,
+}) {
   return Center(
     child: SizedBox(
       width: MediaQuery.of(context).size.width,
@@ -39,8 +41,7 @@ Widget AlertBox(
             ],
           ),
           actions: [
-            Button(
-                context: context, buttonText: buttonText, colorDifference: 60)
+            gestureDetector,
           ],
         ),
       ),

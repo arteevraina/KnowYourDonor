@@ -3,8 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
 import 'package:knowyourdonor/constants/validators.dart';
+import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/components/alertbox.dart';
-import '../constants/colors.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // Stateful Widget that handles Login Tasks
 class LoginPage extends StatefulWidget {
@@ -17,23 +20,82 @@ class _LoginPageState extends State<LoginPage> {
   // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
   TextEditingController _phoneNumberController = TextEditingController();
-  TextEditingController _userNameController = TextEditingController();
-  TextEditingController _bloodGroupController = TextEditingController();
+  TextEditingController _otpController = TextEditingController();
 
   void signIn() {
     print(_formKey.currentState.validate());
   }
 
-  // ignore: unused_element
   void _otpAlertBox(BuildContext context) {
     showDialog(
+      context: context,
+      child: AlertBox(
         context: context,
-        child: AlertBox(
-          context: context,
-          inputText: 'Enter OTP',
-          buttonText: 'Submit',
-          title: 'Enter OTP',
-        ));
+        inputText: 'Enter OTP',
+        buttonText: 'Submit',
+        title: 'Enter OTP',
+        inputController: _otpController,
+        gestureDetector: GestureDetector(
+          onTap: verifyOTP(context),
+          child: Button(
+            context: context,
+            buttonText: "Verify OTP",
+            colorDifference: 60,
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Function for verifyOTP
+  verifyOTP(BuildContext context) {
+    try {
+      Provider.of<AuthService>(
+        context,
+        listen: false,
+      ).verifyOTP(_otpController.text).then((value) {
+        print("Verify OTP");
+        Fluttertoast.showToast(
+          msg: "OTP Verified",
+          textColor: normalTextColor,
+          backgroundColor: buttonColor,
+        );
+      });
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: e.toString(),
+        textColor: errorTextColor,
+        backgroundColor: buttonColor,
+      );
+    }
+  }
+
+  sendOTP(BuildContext context) {
+    try {
+      Provider.of<AuthService>(
+        context,
+        listen: false,
+      ).verifyPhone("+91" + _phoneNumberController.text).then((value) {
+        _otpAlertBox(context);
+      }).catchError((e) {
+        String errorMsg = "Can't Authenticare you, Try Again Later";
+        if (e.toString().contains(
+            'We have blocked all requests from this device due to unusual activity. Try again later.')) {
+          errorMsg = "Please wait as you have exceeded you number requests";
+        }
+        Fluttertoast.showToast(
+          msg: errorMsg,
+          textColor: errorTextColor,
+          backgroundColor: buttonColor,
+        );
+      });
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: e.toString(),
+        textColor: errorTextColor,
+        backgroundColor: buttonColor,
+      );
+    }
   }
 
   @override
@@ -74,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                         context: context,
                         hintText: "Phone Number",
                         isPassword: false,
-                        inputController: _bloodGroupController,
+                        inputController: _phoneNumberController,
                         validator: bloodGroupValidator,
                         fieldIcon: Icon(
                           Icons.call,
@@ -85,12 +147,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        _otpAlertBox(context);
+                        sendOTP(context);
+                        print("Do something to verify the phone number");
                       },
                       child: Button(
-                          context: context,
-                          buttonText: "Send OTP",
-                          colorDifference: 60),
+                        context: context,
+                        buttonText: "Send OTP",
+                        colorDifference: 60,
+                      ),
                     )
                   ],
                 ),
