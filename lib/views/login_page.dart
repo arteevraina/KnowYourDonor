@@ -10,22 +10,13 @@ import 'package:knowyourdonor/views/otp_page.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-// Stateful Widget that handles Login Tasks
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
+// Stateful Widget that handles Phone Verification Task
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends StatelessWidget {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
   TextEditingController _phoneNumberController = TextEditingController();
-  TextEditingController _otpController = TextEditingController();
-
-  void signIn() {
-    print(_formKey.currentState.validate());
-  }
 
   sendOTP(BuildContext context) {
     try {
@@ -100,17 +91,18 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextBox(
-                        context: context,
-                        hintText: "Phone Number",
-                        countrycode: '+91',
-                        isPassword: false,
-                        inputController: _phoneNumberController,
-                        validator: phoneNumberValidator,
-                        keyboardtype: TextInputType.phone,
-                        fieldIcon: Icon(
-                          Icons.call,
-                          color: buttonColor,
-                        )),
+                      context: context,
+                      hintText: "Phone Number",
+                      countrycode: '+91',
+                      isPassword: false,
+                      inputController: _phoneNumberController,
+                      validator: phoneNumberValidator,
+                      keyboardtype: TextInputType.phone,
+                      fieldIcon: Icon(
+                        Icons.call,
+                        color: buttonColor,
+                      ),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
