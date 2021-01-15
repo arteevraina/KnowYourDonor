@@ -13,7 +13,7 @@ TextStyle mediumTextStyle() {
 TextStyle largeTextStyle() {
   return GoogleFonts.josefinSlab(
     textStyle: TextStyle(
-        color: normalTextColor, fontSize: 30, fontWeight: FontWeight.bold),
+        color: errorTextColor, fontSize: 30, fontWeight: FontWeight.bold),
   );
 }
 

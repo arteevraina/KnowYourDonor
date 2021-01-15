@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
+import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
@@ -81,6 +82,15 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(
               height: 40,
+            ),
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  'KNOW YOUR DONOR',
+                  style: largeTextStyle(),
+                ),
+              ),
             ),
             Expanded(
               flex: 2,
