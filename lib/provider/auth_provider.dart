@@ -6,11 +6,8 @@ class AuthService with ChangeNotifier {
   final auth = FirebaseAuth.instance;
   String verificationId;
 
+  // Function for verifying Phone Number.
   Future<void> verifyPhone(String phoneNumber) async {
-    final PhoneCodeSent smsOTPSent = (String verId, [int forceCodeResend]) {
-      print(verId + " **************");
-      this.verificationId = verId;
-    };
     try {
       await auth.verifyPhoneNumber(
           phoneNumber: phoneNumber,
@@ -19,13 +16,23 @@ class AuthService with ChangeNotifier {
             //Either sends an SMS with a 6 digit code to the phone number specified, or sign's the user in and [verificationCompleted] is called.
             this.verificationId = verId;
           },
-          codeSent: smsOTPSent,
+
+          // Callback when code is sent to the device.
+          codeSent: (String verId, [int forceCodeResend]) {
+            this.verificationId = verId;
+          },
+
+          // Once the timeout passes device will no longer resolve any incoming message.
           timeout: const Duration(
             seconds: 120,
           ),
-          verificationCompleted: (AuthCredential phoneAuthCredential) {
+
+          // Callbacks when verification is completed.
+          verificationCompleted: (AuthCredential phoneAuthCredential) async {
             print(phoneAuthCredential);
           },
+
+          //Listens for errors with verification, such as too many attempts.
           verificationFailed: (FirebaseAuthException exception) {
             throw exception;
           });
@@ -34,7 +41,9 @@ class AuthService with ChangeNotifier {
     }
   }
 
+  //Function for verifying OTP sent.
   Future<void> verifyOTP(String otp) async {
+    print("Verification ID " + verificationId);
     try {
       final AuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId,

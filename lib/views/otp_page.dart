@@ -21,21 +21,25 @@ class OTPPage extends StatelessWidget {
         context,
         listen: false,
       ).verifyOTP(_otpController.text).then((value) {
-        print("Verify OTP");
+        // Toast shows when OTP is Verified.
+        //TODO: Navigate to new Screen.
         Fluttertoast.showToast(
           msg: "OTP Verified",
           textColor: normalTextColor,
           backgroundColor: buttonColor,
         );
       }).catchError((e) {
-        print(e);
         String errorMsg = "Can't Authenticare you, Try Again Later";
+
+        // If error is due to Invalid Code.
         if (e.toString().contains(
             'The sms verification code used to create the phone auth credential is invalid. Please resend the verification code sms and be sure use the verification code provided by the user')) {
           errorMsg = "Invalid OTP";
         }
+
+        // Show the toast for error.
         Fluttertoast.showToast(
-          msg: e.toString(),
+          msg: errorMsg,
           textColor: errorTextColor,
           backgroundColor: buttonColor,
         );
