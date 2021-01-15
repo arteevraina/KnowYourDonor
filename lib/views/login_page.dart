@@ -102,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextBox(
                         context: context,
                         hintText: "Phone Number",
+                        countrycode: '+91',
                         isPassword: false,
                         inputController: _phoneNumberController,
                         validator: phoneNumberValidator,
