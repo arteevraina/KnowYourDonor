@@ -86,6 +86,7 @@ class OTPPage extends StatelessWidget {
                     TextBox(
                       context: context,
                       hintText: "Enter OTP",
+                      // countrycode: '',
                       isPassword: false,
                       inputController: _otpController,
                       validator: bloodGroupValidator,

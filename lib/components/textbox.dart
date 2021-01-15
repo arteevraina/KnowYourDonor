@@ -24,9 +24,9 @@ Widget TextBox(
       prefixIcon: Padding(
         padding: const EdgeInsets.only(left: 8.0),
         child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.13,
+          width: MediaQuery.of(context).size.width * 0.14,
           child: Row(
-            children: [fieldIcon, Text(countrycode)],
+            children: [fieldIcon, Text(countrycode == null ? '' : countrycode)],
           ),
         ),
       ),
