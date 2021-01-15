@@ -10,8 +10,10 @@ Widget TextBox(
     @required TextEditingController inputController,
     @required Function validator,
     @required bool isPassword,
+    TextInputType keyboardtype,
     Icon fieldIcon}) {
   return TextFormField(
+    keyboardType: keyboardtype,
     obscureText: isPassword,
     validator: validator,
     controller: inputController,

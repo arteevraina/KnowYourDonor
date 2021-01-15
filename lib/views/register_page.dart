@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
 import 'package:knowyourdonor/constants/validators.dart';
-import 'package:knowyourdonor/components/alertbox.dart';
 import '../constants/colors.dart';
 
 // Stateful Widget that handles Login Tasks

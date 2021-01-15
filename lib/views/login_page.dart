@@ -94,7 +94,8 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: "Phone Number",
                         isPassword: false,
                         inputController: _phoneNumberController,
-                        validator: bloodGroupValidator,
+                        validator: phoneNumberValidator,
+                        keyboardtype: TextInputType.phone,
                         fieldIcon: Icon(
                           Icons.call,
                           color: buttonColor,
@@ -104,8 +105,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        sendOTP(context);
-                        print("Do something to verify the phone number");
+                        if (_formKey.currentState.validate()) {
+                          sendOTP(context);
+                          print("Do something to verify the phone number");
+                        }
                       },
                       child: Button(
                         context: context,
