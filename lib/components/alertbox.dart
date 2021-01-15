@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
-import 'package:knowyourdonor/constants/validators.dart';
-import 'button.dart';
 import 'textbox.dart';
 
 // ignore: non_constant_identifier_names
-Widget AlertBox({
-  @required BuildContext context,
-  @required String inputText,
-  @required String buttonText,
-  @required String title,
-  @required TextEditingController inputController,
-  @required GestureDetector gestureDetector,
-}) {
+Widget AlertBox(
+    {@required BuildContext context,
+    @required String inputText,
+    @required String buttonText,
+    @required String title,
+    @required TextEditingController inputController,
+    @required GestureDetector gestureDetector,
+    TextInputType keyboardtype}) {
   return Center(
     child: SizedBox(
       width: MediaQuery.of(context).size.width,
@@ -33,6 +31,7 @@ Widget AlertBox({
               ),
               TextBox(
                   context: context,
+                  keyboardtype: keyboardtype,
                   hintText: inputText,
                   inputController:
                       inputController, //make it @required if necessary

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
+import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
@@ -83,6 +84,15 @@ class _LoginPageState extends State<LoginPage> {
               height: 40,
             ),
             Expanded(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  'KNOW YOUR DONOR',
+                  style: largeTextStyle(),
+                ),
+              ),
+            ),
+            Expanded(
               flex: 2,
               child: Form(
                 key: _formKey,
@@ -92,9 +102,11 @@ class _LoginPageState extends State<LoginPage> {
                     TextBox(
                         context: context,
                         hintText: "Phone Number",
+                        countrycode: '+91',
                         isPassword: false,
                         inputController: _phoneNumberController,
-                        validator: bloodGroupValidator,
+                        validator: phoneNumberValidator,
+                        keyboardtype: TextInputType.phone,
                         fieldIcon: Icon(
                           Icons.call,
                           color: buttonColor,
@@ -104,8 +116,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        sendOTP(context);
-                        print("Do something to verify the phone number");
+                        if (_formKey.currentState.validate()) {
+                          sendOTP(context);
+                          print("Do something to verify the phone number");
+                        }
                       },
                       child: Button(
                         context: context,

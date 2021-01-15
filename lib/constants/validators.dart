@@ -26,7 +26,7 @@ Function(String) passwordValidator = (String password) {
 };
 
 Function(String) phoneNumberValidator = (String phoneNumber) {
-  String p = r'^[2-9]{2}[0-9]{8}$';
+  String p = r'^[2-9]{1}[0-9]{9}$';
   RegExp regExp = RegExp(p);
 
   if (phoneNumber.isEmpty) {

@@ -10,14 +10,26 @@ Widget TextBox(
     @required TextEditingController inputController,
     @required Function validator,
     @required bool isPassword,
+    TextInputType keyboardtype,
+    String countrycode,
     Icon fieldIcon}) {
   return TextFormField(
+    keyboardType: keyboardtype,
     obscureText: isPassword,
     validator: validator,
     controller: inputController,
     style: mediumTextStyle(),
     decoration: InputDecoration(
-      prefixIcon: fieldIcon,
+      prefixStyle: mediumTextStyle(),
+      prefixIcon: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.13,
+          child: Row(
+            children: [fieldIcon, Text(countrycode)],
+          ),
+        ),
+      ),
       hintStyle: mediumTextStyle(),
       hintText: hintText,
       border: OutlineInputBorder(
