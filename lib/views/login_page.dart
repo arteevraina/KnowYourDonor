@@ -62,7 +62,7 @@ class LoginPage extends StatelessWidget {
               height: 60,
             ),
             Expanded(
-              flex: 3,
+              flex: 4,
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: SvgPicture.asset(
@@ -70,16 +70,10 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              flex: 2,
-              child: Center(
-                child: Text(
-                  'KNOW YOUR DONOR',
-                  style: largeTextStyle(),
-                ),
+            Center(
+              child: Text(
+                'KNOW YOUR DONOR',
+                style: largeTextStyle(),
               ),
             ),
             Expanded(
