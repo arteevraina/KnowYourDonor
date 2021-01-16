@@ -6,7 +6,8 @@ import 'package:knowyourdonor/constants/validators.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
-import '../constants/colors.dart';
+import 'package:knowyourdonor/constants/colors.dart';
+import 'package:knowyourdonor/constants/text_styles.dart';
 
 // Stateless Widget that handles OTP Verification Task
 class OTPPage extends StatelessWidget {
@@ -65,23 +66,31 @@ class OTPPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 50,
+              height: 60,
             ),
             Expanded(
               flex: 3,
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: SvgPicture.asset(
-                  'assets/drop.svg',
-                  color: errorTextColor,
+                  'assets/doctor.svg',
                 ),
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             Expanded(
               flex: 2,
+              child: Center(
+                child: Text(
+                  'KNOW YOUR DONOR',
+                  style: largeTextStyle(),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 3,
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -91,6 +100,7 @@ class OTPPage extends StatelessWidget {
                       context: context,
                       hintText: "Enter OTP",
                       // countrycode: '',
+                      keyboardtype: TextInputType.number,
                       isPassword: false,
                       inputController: _otpController,
                       validator: bloodGroupValidator,

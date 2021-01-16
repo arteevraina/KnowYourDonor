@@ -26,7 +26,13 @@ Widget TextBox(
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.14,
           child: Row(
-            children: [fieldIcon, Text(countrycode == null ? '' : countrycode)],
+            children: [
+              fieldIcon,
+              Text(
+                countrycode == null ? '' : countrycode,
+                style: mediumTextStyle(),
+              )
+            ],
           ),
         ),
       ),
