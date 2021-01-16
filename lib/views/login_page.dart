@@ -59,23 +59,22 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 50,
+              height: 60,
             ),
             Expanded(
               flex: 3,
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: SvgPicture.asset(
-                  'assets/drop.svg',
-                  color: errorTextColor,
+                  'assets/doctor.svg',
                 ),
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Center(
                 child: Text(
                   'KNOW YOUR DONOR',
@@ -84,7 +83,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Form(
                 key: _formKey,
                 child: Column(

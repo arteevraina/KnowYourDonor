@@ -20,16 +20,22 @@ Widget TextBox(
     controller: inputController,
     style: mediumTextStyle(),
     decoration: InputDecoration(
-      // prefixStyle: mediumTextStyle(),
-      // prefixIcon: Padding(
-      //   padding: const EdgeInsets.only(left: 8.0),
-      //   child: SizedBox(
-      //     width: MediaQuery.of(context).size.width * 0.13,
-      //     child: Row(
-      //       children: [fieldIcon, Text(countrycode)],
-      //     ),
-      //   ),
-      // ),
+      prefixStyle: mediumTextStyle(),
+      prefixIcon: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.14,
+          child: Row(
+            children: [
+              fieldIcon,
+              Text(
+                countrycode == null ? '' : countrycode,
+                style: mediumTextStyle(),
+              )
+            ],
+          ),
+        ),
+      ),
       hintStyle: mediumTextStyle(),
       hintText: hintText,
       border: OutlineInputBorder(
