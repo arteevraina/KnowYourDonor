@@ -9,8 +9,15 @@ import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 
-// Stateless Widget that handles OTP Verification Task
-class OTPPage extends StatelessWidget {
+// Stateful Widget that handles OTP Verification Task
+class OTPPage extends StatefulWidget {
+  @override
+  _OTPPageState createState() => _OTPPageState();
+}
+
+class _OTPPageState extends State<OTPPage> {
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
   TextEditingController _otpController = TextEditingController();
 
@@ -56,6 +63,8 @@ class OTPPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<AuthService>(context);
+
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -106,16 +115,21 @@ class OTPPage extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        // dummufunction()
-                        verifyOTP(context);
-                      },
-                      child: Button(
-                          context: context,
-                          buttonText: "Verify OTP",
-                          colorDifference: 60),
-                    )
+                    user.status == Status.OTPVerifying
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              // dummufunction()
+                              verifyOTP(context);
+                            },
+                            child: Button(
+                              context: context,
+                              buttonText: "Verify OTP",
+                              colorDifference: 60,
+                            ),
+                          )
                   ],
                 ),
               ),

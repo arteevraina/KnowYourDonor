@@ -1,14 +1,37 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+enum Status {
+  Uninitialized,
+  PhoneNumberNotVerified,
+  PhoneNumberVerifying,
+  PhoneNumberVerified,
+  OTPSentState,
+  OTPNotVerified,
+  OTPVerifying,
+  OTPVerified,
+}
 
 // Class for the Phone Auth Service.
 class AuthService with ChangeNotifier {
-  final auth = FirebaseAuth.instance;
+  FirebaseAuth auth;
+
   String verificationId;
+  Status _status = Status.Uninitialized;
+  User _user;
+
+  Status get status => _status;
+  User get user => _user;
+
+  AuthService.instance() : auth = FirebaseAuth.instance {
+    auth.authStateChanges().listen(onAuthStateChanged);
+  }
 
   // Function for verifying Phone Number.
-  Future<void> verifyPhone(String phoneNumber) async {
+  Future<bool> verifyPhone(String phoneNumber) async {
     try {
+      _status = Status.PhoneNumberVerifying;
+      notifyListeners();
       await auth.verifyPhoneNumber(
           phoneNumber: phoneNumber,
           codeAutoRetrievalTimeout: (String verId) {
@@ -20,6 +43,8 @@ class AuthService with ChangeNotifier {
           // Callback when code is sent to the device.
           codeSent: (String verId, [int forceCodeResend]) {
             this.verificationId = verId;
+            _status = Status.OTPSentState;
+            notifyListeners();
           },
 
           // Once the timeout passes device will no longer resolve any incoming message.
@@ -36,8 +61,11 @@ class AuthService with ChangeNotifier {
           verificationFailed: (FirebaseAuthException exception) {
             throw exception;
           });
+      return true;
     } catch (e) {
-      throw e;
+      _status = Status.PhoneNumberNotVerified;
+      notifyListeners();
+      return false;
     }
   }
 
@@ -45,19 +73,36 @@ class AuthService with ChangeNotifier {
   Future<void> verifyOTP(String otp) async {
     print("Verification ID " + verificationId);
     try {
+      _status = Status.OTPVerifying;
+      notifyListeners();
       final AuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId,
         smsCode: otp,
       );
-      final UserCredential user = await auth.signInWithCredential(credential);
-      final User currentUser = auth.currentUser;
-      print(user);
-
-      if (currentUser.uid != "") {
-        print(currentUser.uid);
-      }
+      await auth.signInWithCredential(credential);
     } catch (e) {
+      _status = Status.OTPNotVerified;
+      notifyListeners();
       throw e;
     }
+  }
+
+  // Function for signing out.
+  Future signOut() async {
+    await auth.signOut();
+    _status = Status.PhoneNumberNotVerified;
+    notifyListeners();
+    return Future.delayed(Duration.zero);
+  }
+
+  Future<void> onAuthStateChanged(User user) async {
+    if (user == null) {
+      _status = Status.PhoneNumberNotVerified;
+    } else {
+      print("Verified");
+      _user = user;
+      _status = Status.OTPVerified;
+    }
+    notifyListeners();
   }
 }
