@@ -6,13 +6,17 @@ import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
-import 'package:knowyourdonor/views/otp_page.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 // Stateful Widget that handles Phone Verification Task
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
@@ -24,8 +28,8 @@ class LoginPage extends StatelessWidget {
         context,
         listen: false,
       ).verifyPhone("+91" + _phoneNumberController.text).then((value) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (BuildContext context) => OTPPage()));
+        // Navigator.pushReplacement(context,
+        //     MaterialPageRoute(builder: (BuildContext context) => OTPPage()));
       }).catchError((e) {
         String errorMsg = "Can't Authenticare you, Try Again Later";
         if (e.toString().contains(
@@ -49,6 +53,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<AuthService>(context);
+
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -99,19 +105,24 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        if (_formKey.currentState.validate()) {
-                          sendOTP(context);
-                          print("Do something to verify the phone number");
-                        }
-                      },
-                      child: Button(
-                        context: context,
-                        buttonText: "Send OTP",
-                        colorDifference: 60,
-                      ),
-                    )
+                    user.status == Status.PhoneNumberVerifying
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              if (_formKey.currentState.validate()) {
+                                sendOTP(context);
+                                print(
+                                    "Do something to verify the phone number");
+                              }
+                            },
+                            child: Button(
+                              context: context,
+                              buttonText: "Send OTP",
+                              colorDifference: 60,
+                            ),
+                          ),
                   ],
                 ),
               ),
