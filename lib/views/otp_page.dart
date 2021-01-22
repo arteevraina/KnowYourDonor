@@ -8,6 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
+import 'package:knowyourdonor/components/loader.dart';
 
 // Stateful Widget that handles OTP Verification Task
 class OTPPage extends StatefulWidget {
@@ -117,7 +118,7 @@ class _OTPPageState extends State<OTPPage> {
                     ),
                     user.status == Status.OTPVerifying
                         ? Center(
-                            child: CircularProgressIndicator(),
+                            child: Loader(),
                           )
                         : GestureDetector(
                             onTap: () {

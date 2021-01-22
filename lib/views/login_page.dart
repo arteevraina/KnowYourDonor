@@ -8,7 +8,7 @@ import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:knowyourdonor/components/loader.dart';
 // Stateful Widget that handles Phone Verification Task
 
 class LoginPage extends StatefulWidget {
@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     user.status == Status.PhoneNumberVerifying
                         ? Center(
-                            child: CircularProgressIndicator(),
+                            child: Loader(),
                           )
                         : GestureDetector(
                             onTap: () {
