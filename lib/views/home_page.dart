@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourdonor/components/appbar.dart';
+import 'package:knowyourdonor/views/donate_blood_page.dart';
+import 'package:knowyourdonor/views/request_blood_page.dart';
 import 'package:provider/provider.dart';
-import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
 
 // Home Screen of the App.
@@ -17,24 +18,26 @@ class Home extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                alignment: Alignment.center,
-                height: 300,
-                width: 300,
-                child: Text(
-                  "Home",
-                  style: TextStyle(color: normalTextColor, fontSize: 30),
-                ),
-                color: Colors.amber,
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => RequestBlood()));
+                },
+                child: Text("Request Blood"),
               ),
-              Center(
-                child: RaisedButton(
-                  onPressed: () {
-                    Provider.of<AuthService>(context, listen: false).signOut();
-                  },
-                  child: Text("Sign Out"),
-                ),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DonateBlood()));
+                },
+                child: Text("Donate Blood"),
               ),
+              // RaisedButton(
+              //   onPressed: () {
+              //     Provider.of<AuthService>(context, listen: false).signOut();
+              //   },
+              //   child: Text("Sign Out"),
+              // ),
             ],
           ),
         ),
