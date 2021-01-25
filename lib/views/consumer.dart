@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourdonor/views/home_page.dart';
 import 'package:knowyourdonor/views/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourdonor/views/login_page.dart';
@@ -24,7 +25,8 @@ class ConsumerWidget extends StatelessWidget {
           return SplashScreen();
         } else if (user.status == Status.PhoneNumberNotVerified ||
             user.status == Status.PhoneNumberVerifying) {
-          return LoginPage();
+          // return LoginPage();
+          return Wrapper();
         } else if (user.status == Status.PhoneNumberVerified ||
             user.status == Status.OTPSentState ||
             user.status == Status.OTPVerifying) {

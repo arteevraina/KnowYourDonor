@@ -19,6 +19,17 @@ TextStyle largeTextStyle() {
 
 TextStyle buttonTextStyle() {
   return GoogleFonts.josefinSlab(
-      textStyle: TextStyle(
-          color: buttonTextColor, fontSize: 30, fontWeight: FontWeight.bold));
+    textStyle: TextStyle(
+        color: buttonTextColor, fontSize: 30, fontWeight: FontWeight.bold),
+  );
+}
+
+// Text Style for AppBar Title.
+TextStyle appBarTextStyle() {
+  return GoogleFonts.josefinSlab(
+    textStyle: TextStyle(
+      color: appBarTitleColor,
+      fontSize: 25,
+    ),
+  );
 }
