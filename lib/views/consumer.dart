@@ -21,9 +21,7 @@ class ConsumerWidget extends StatelessWidget {
       ],
       child: Consumer<AuthService>(builder: (context, AuthService user, _) {
         print(user.status);
-        if (user.status == Status.Uninitialized) {
-          return SplashScreen();
-        } else if (user.status == Status.PhoneNumberNotVerified ||
+        if (user.status == Status.PhoneNumberNotVerified ||
             user.status == Status.PhoneNumberVerifying) {
           // return LoginPage();
           return Wrapper();
