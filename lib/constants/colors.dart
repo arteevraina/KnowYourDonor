@@ -7,3 +7,7 @@ const Color buttonColor = Color(0xFF44BBA4);
 const Color buttonTextColor = Color(0xFFF6F7EB);
 const Color textFieldBorderColor = Color(0xFF3F88C5);
 const Color buttonShadowColor = Color(0xFF256b5d);
+
+// Color for AppBar.
+const Color appBarColor = Color(0xFFE94F37);
+const Color appBarTitleColor = Color(0xFFF6F7EB);
