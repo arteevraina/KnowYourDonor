@@ -47,7 +47,6 @@ jobs:
       # Install Copywriter
       - run: pub global activate copywriter
 
-      # Dry run Copywriter
       - run: copywriter -d
 
       # Upload generated apk to the artifacts.
