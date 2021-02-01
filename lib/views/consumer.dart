@@ -4,7 +4,6 @@ import 'package:knowyourdonor/views/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourdonor/views/login_page.dart';
 import 'package:knowyourdonor/views/otp_page.dart';
-import 'package:knowyourdonor/views/splash_screen.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/provider/bottom_navigation_provider.dart';
 
