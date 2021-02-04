@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:knowyourdonor/views/home_page.dart';
+// import 'package:knowyourdonor/views/home_page.dart';
 import 'package:knowyourdonor/views/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourdonor/views/login_page.dart';
@@ -18,6 +18,7 @@ class ConsumerWidget extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => BottomNavigationBarProvider()),
       ],
+      // ignore: missing_return
       child: Consumer<AuthService>(builder: (context, AuthService user, _) {
         print(user.status);
         if (user.status == Status.PhoneNumberNotVerified ||
