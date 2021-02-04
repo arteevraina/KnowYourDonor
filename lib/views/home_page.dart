@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:knowyourdonor/components/appbar.dart';
 import 'package:knowyourdonor/views/donate_blood_page.dart';
 import 'package:knowyourdonor/views/request_blood_page.dart';
-import 'package:provider/provider.dart';
-import 'package:knowyourdonor/provider/auth_provider.dart';
+// import 'package:provider/provider.dart';
+// import 'package:knowyourdonor/provider/auth_provider.dart';
 
 // Home Screen of the App.
 class Home extends StatelessWidget {
