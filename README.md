@@ -38,7 +38,7 @@ See the [contributor's guide!](CONTRIBUTING.md)
 
 ## Questions or issues ?
 
-If you have general question about the project. Feel free to join [discord server](https://discord.gg/ypvX2GSc).
+If you have general question about the project. Feel free to join [discord server](https://discord.gg/8CsHncucds).
 
 ### Learn Flutter ?
 
