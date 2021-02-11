@@ -1,15 +1,39 @@
-# knowyourdonor
+# Know Your Donor
 
-Blood Donation app (work is in progress).
+Blood Donation app made for connecting donor with the patient. During this harsh times of pandemic, normal health care services are facing a set back and Covid-19 is on the top of the priority of health care departments. Also, people are now afraid to leave visit hospitals to arrange blood as they fear they might catch Covid-19. So, to make their life easier idea of Know Your Donor's development is started.
 
-## Getting Started
+## Tech Stack:
+* Flutter
+* Dart
+* Firebase
 
-- **Download Dependencies**
+## Features:
+This project is still in development stage. So, feature requests are welcome. Feel free to open an issue if you have something in mind, it might make a large impact 💓
 
-  $ flutter pub get
+## How to setup locally ?
 
-- **Start the app**
+1. Fork the repo.
 
-  $ flutter run
+2. Clone the repo using the forked repo.
 
-* Note - Provider package has been used for state management.
+3. Open the code in your favorite code editor.
+
+4. Install the dependencies using the following command:
+
+```
+$ flutter pub get
+```
+
+5. Build the app using the following command:
+
+```
+$ flutter run
+```
+
+## Interested in contributing ?
+
+See the contributor's guide!
+
+## Questions or issues ?
+
+If you have general question about the project. Feel free to join [discord server](https://discord.gg/ypvX2GSc).
