@@ -1,7 +1,7 @@
 // Functions for validations of usernames, passwords, phonenumbers, bloodgroups, emailaddresses.
 // More functions will be added as the app grows.
 
-import 'dart:html';
+// import 'dart:html';
 
 Function(String) userNameValidator = (String userName) {
   if (userName.isEmpty) {
