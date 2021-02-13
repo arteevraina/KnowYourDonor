@@ -1,5 +1,7 @@
-// Functions for validations of usernames, passwords, phonenumbers, bloodgroups.
+// Functions for validations of usernames, passwords, phonenumbers, bloodgroups, emailaddress.
 // More functions will be added as the app grows.
+
+import 'dart:html';
 
 Function(String) userNameValidator = (String userName) {
   if (userName.isEmpty) {
@@ -54,3 +56,17 @@ Function(String) bloodGroupValidator = (String bloodGroup) {
 
   return null;
 };
+
+
+Function(String) emailAddressValidator = (String emailaddress) {
+  String email = r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]";
+  bool valids = RegExp(email).hasMatch(emailaddress);
+
+  if (emailaddress.isEmpty) {
+    return "Please enter a valid email";
+  }
+  if (valids == false) {
+    return "Email Address is not Valid";
+  }
+  return null;
+}
