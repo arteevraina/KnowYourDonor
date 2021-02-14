@@ -1,4 +1,4 @@
-// Functions for validations of usernames, passwords, phonenumbers, bloodgroups.
+// Functions for validations of usernames, passwords, phonenumbers, bloodgroups ,emailaddress.
 // More functions will be added as the app grows.
 
 Function(String) userNameValidator = (String userName) {
@@ -50,6 +50,21 @@ Function(String) bloodGroupValidator = (String bloodGroup) {
 
   if (!regExp.hasMatch(bloodGroup)) {
     return "BloodGroup is not valid";
+  }
+
+  return null;
+};
+
+Function(String) emailValidator = (String emailaddress) {
+  String email = r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+  bool isValid = RegExp(email).hasMatch(emailaddress);
+
+  if (emailaddress.isEmpty) {
+    return "Please enter a valid Email";
+  }
+
+  if (!isValid) {
+    return "Email address is not valid";
   }
 
   return null;
