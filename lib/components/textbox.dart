@@ -4,15 +4,15 @@ import 'package:knowyourdonor/constants/colors.dart';
 
 // TextBox for Emails, Password, Phone Number
 // ignore: non_constant_identifier_names
-Widget TextBox(
-    {@required BuildContext context,
-    @required String hintText,
-    @required TextEditingController inputController,
-    @required Function validator,
-    @required bool isPassword,
-    TextInputType keyboardtype,
-    String countrycode,
-    Icon fieldIcon}) {
+Widget TextBox({
+  @required BuildContext context,
+  @required String hintText,
+  @required TextEditingController inputController,
+  @required Function validator,
+  @required bool isPassword,
+  TextInputType keyboardtype,
+  Icon fieldIcon,
+}) {
   return TextFormField(
     keyboardType: keyboardtype,
     obscureText: isPassword,
@@ -22,19 +22,11 @@ Widget TextBox(
     decoration: InputDecoration(
       prefixStyle: mediumTextStyle(),
       prefixIcon: Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.14,
-          child: Row(
-            children: [
-              fieldIcon,
-              Text(
-                countrycode == null ? '' : countrycode,
-                style: mediumTextStyle(),
-              )
-            ],
-          ),
+        padding: const EdgeInsets.only(
+          left: 8.0,
+          right: 8.0,
         ),
+        child: fieldIcon,
       ),
       hintStyle: mediumTextStyle(),
       hintText: hintText,
