@@ -6,13 +6,13 @@ import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 
-// Stateful Widget that handles Email Login Task.
-class LoginPage extends StatefulWidget {
+// Stateful Widget that handles Email Register Task.
+class RegisterPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   // Unique key for the validation of the form.
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
@@ -88,14 +88,14 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Button(
                         context: context,
-                        buttonText: "Login",
+                        buttonText: "Register",
                         colorDifference: 60,
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                        "Not registered ? Log In!",
+                        "Already registered ? Log In!",
                         style: mediumTextStyle(),
                       ),
                     ],
