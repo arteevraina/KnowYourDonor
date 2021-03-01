@@ -2,10 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 
-TextStyle mediumTextStyle() {
+TextStyle smallTextStyle() {
   return GoogleFonts.josefinSlab(
     textStyle: TextStyle(
       color: normalTextColor,
+      fontSize: 10,
+    ),
+  );
+}
+
+TextStyle mediumTextStyle() {
+  return GoogleFonts.josefinSlab(
+    textStyle: TextStyle(
+      color: errorTextColor,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
     ),
   );
 }

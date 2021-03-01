@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 
-// Multipurpose Button for login and other tasks.
+// Button for Donor and Recipient Forms.
 // ignore: non_constant_identifier_names
-Widget Button(
-    {BuildContext context,
-    @required String buttonText,
+Widget FormButton(
+    {@required String buttonText,
     Color textColor,
     Color backgroundColor,
     int colorDifference}) {
   return Container(
     padding: EdgeInsets.symmetric(vertical: 15),
-    width: MediaQuery.of(context).size.width,
+    width: 150.0,
     decoration: BoxDecoration(
       gradient: LinearGradient(colors: [
         buttonColor,
