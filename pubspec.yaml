@@ -43,6 +43,7 @@ dependencies:
   provider: ^4.3.2+3
   # package for toast message
   fluttertoast: ^7.1.6
+  carousel_slider: ^3.0.0
 
 dev_dependencies:
   flutter_test:
