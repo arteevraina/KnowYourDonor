@@ -54,18 +54,3 @@ Function(String) bloodGroupValidator = (String bloodGroup) {
 
   return null;
 };
-
-Function(String) emailValidator = (String emailAddress) {
-  String email = r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
-  bool isValid = RegExp(email).hasMatch(emailAddress);
-
-  if (emailAddress.isEmpty) {
-    return "Please enter a valid Email";
-  }
-
-  if (!isValid) {
-    return "Email address is not valid";
-  }
-
-  return null;
-};

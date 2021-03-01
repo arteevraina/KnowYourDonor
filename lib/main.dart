@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:knowyourdonor/views/login_page.dart';
-import 'package:knowyourdonor/views/register_page.dart';
+// import 'package:knowyourdonor/views/login_page.dart';
+// import 'package:knowyourdonor/views/register_page.dart';
 import 'package:knowyourdonor/views/home_page.dart';
 
 void main() async {
