@@ -61,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         hintText: "Enter your email",
                         isPassword: false,
                         inputController: _emailController,
-                        validator: phoneNumberValidator,
+                        validator: emailValidator,
                         keyboardtype: TextInputType.emailAddress,
                         fieldIcon: Icon(
                           Icons.email,
@@ -86,17 +86,22 @@ class _RegisterPageState extends State<RegisterPage> {
                       SizedBox(
                         height: 10,
                       ),
-                      Button(
-                        context: context,
-                        buttonText: "Register",
-                        colorDifference: 60,
+                      GestureDetector(
+                        onTap: () {
+                          _formKey.currentState.validate();
+                        },
+                        child: Button(
+                          context: context,
+                          buttonText: "Register",
+                          colorDifference: 60,
+                        ),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         "Already registered ? Log In!",
-                        style: mediumTextStyle(),
+                        style: smallTextStyle(),
                       ),
                     ],
                   ),

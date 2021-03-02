@@ -6,7 +6,7 @@ TextStyle smallTextStyle() {
   return GoogleFonts.josefinSlab(
     textStyle: TextStyle(
       color: normalTextColor,
-      fontSize: 10,
+      fontSize: 15,
     ),
   );
 }
@@ -15,7 +15,7 @@ TextStyle mediumTextStyle() {
   return GoogleFonts.josefinSlab(
     textStyle: TextStyle(
       color: errorTextColor,
-      fontSize: 20,
+      fontSize: 25,
       fontWeight: FontWeight.bold,
     ),
   );
@@ -24,14 +24,21 @@ TextStyle mediumTextStyle() {
 TextStyle largeTextStyle() {
   return GoogleFonts.josefinSlab(
     textStyle: TextStyle(
-        color: errorTextColor, fontSize: 30, fontWeight: FontWeight.bold),
+      color: errorTextColor,
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+    ),
   );
 }
 
+// Text Styles for use in buttons.
 TextStyle buttonTextStyle() {
   return GoogleFonts.josefinSlab(
     textStyle: TextStyle(
-        color: buttonTextColor, fontSize: 30, fontWeight: FontWeight.bold),
+      color: buttonTextColor,
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+    ),
   );
 }
 
