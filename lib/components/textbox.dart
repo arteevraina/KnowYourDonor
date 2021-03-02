@@ -18,7 +18,7 @@ Widget TextBox({
     obscureText: isPassword,
     validator: validator,
     controller: inputController,
-    style: mediumTextStyle(),
+    style: smallTextStyle(),
     decoration: InputDecoration(
       prefixStyle: mediumTextStyle(),
       prefixIcon: Padding(
@@ -28,7 +28,7 @@ Widget TextBox({
         ),
         child: fieldIcon,
       ),
-      hintStyle: mediumTextStyle(),
+      hintStyle: smallTextStyle(),
       hintText: hintText,
       border: OutlineInputBorder(
         borderSide: BorderSide(
