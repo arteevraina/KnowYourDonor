@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:knowyourdonor/views/home_page.dart';
+import 'package:knowyourdonor/views/donors_list.dart';
+// import 'package:knowyourdonor/views/home_page.dart';
+// import 'package:knowyourdonor/views/seekers_list.dart';
 // import 'package:knowyourdonor/views/donate_blood_form.dart';
 // import 'package:knowyourdonor/views/home_page.dart';
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: DonorsList(),
     );
   }
 }
