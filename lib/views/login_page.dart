@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/constants/colors.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
+import 'package:knowyourdonor/views/home_page.dart';
+import 'package:knowyourdonor/views/register_page.dart';
+import 'package:provider/provider.dart';
 
 // Stateful Widget that handles Email Login Task.
 class LoginPage extends StatefulWidget {
@@ -87,8 +92,24 @@ class _LoginPageState extends State<LoginPage> {
                         height: 10,
                       ),
                       GestureDetector(
-                        onTap: () {
-                          _formKey.currentState.validate();
+                        onTap: () async {
+                          if (_formKey.currentState.validate()) {
+                            if (!await context.read<AuthProvider>().login(
+                                  _emailController.text,
+                                  _passwordController.text,
+                                )) {
+                              Fluttertoast.showToast(
+                                msg: "Could not Log in",
+                              );
+                            } else {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HomePage(),
+                                ),
+                              );
+                            }
+                          }
                         },
                         child: Button(
                           context: context,
@@ -99,9 +120,19 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Not registered ? Register !",
-                        style: smallTextStyle(),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RegisterPage(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Not registered ? Register !",
+                          style: smallTextStyle(),
+                        ),
                       ),
                     ],
                   ),

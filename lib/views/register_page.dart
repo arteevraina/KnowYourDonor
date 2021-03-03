@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/constants/colors.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
+import 'package:knowyourdonor/views/login_page.dart';
+import 'package:provider/provider.dart';
 
 // Stateful Widget that handles Email Register Task.
 class RegisterPage extends StatefulWidget {
@@ -87,8 +91,24 @@ class _RegisterPageState extends State<RegisterPage> {
                         height: 10,
                       ),
                       GestureDetector(
-                        onTap: () {
-                          _formKey.currentState.validate();
+                        onTap: () async {
+                          if (_formKey.currentState.validate()) {
+                            if (!await context.read<AuthProvider>().register(
+                                  _emailController.text,
+                                  _passwordController.text,
+                                )) {
+                              Fluttertoast.showToast(
+                                msg: "Could not Register",
+                              );
+                            } else {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginPage(),
+                                ),
+                              );
+                            }
+                          }
                         },
                         child: Button(
                           context: context,
@@ -99,9 +119,19 @@ class _RegisterPageState extends State<RegisterPage> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Already registered ? Log In!",
-                        style: smallTextStyle(),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginPage(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Already registered ? Log In!",
+                          style: smallTextStyle(),
+                        ),
                       ),
                     ],
                   ),

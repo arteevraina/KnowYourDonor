@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 // Screen for Home Page of the App.
 class HomePage extends StatelessWidget {
@@ -10,6 +12,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Testing"),
+          actions: [
+            RaisedButton(
+              onPressed: () async {
+                await context.read<AuthProvider>().logout();
+              },
+              child: Text("Sign Out"),
+            )
+          ],
+        ),
         body: Container(
           child: Stack(
             children: [
