@@ -51,3 +51,15 @@ TextStyle appBarTextStyle() {
     ),
   );
 }
+
+// Text Style for use in Home Page Button.
+TextStyle homePageButtonTextStyle() {
+  return GoogleFonts.josefinSlab(
+    textStyle: TextStyle(
+      color: errorTextColor,
+      letterSpacing: 1,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}

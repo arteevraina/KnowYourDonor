@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:knowyourdonor/views/donate_blood_form.dart';
+import 'package:knowyourdonor/views/request_blood_form.dart';
 
 // Screen for Home Page of the App.
 class HomePage extends StatelessWidget {
@@ -13,13 +15,18 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Testing"),
+          title: Text(
+            "Know Your Donor",
+            style: appBarTextStyle(),
+          ),
+          elevation: 0,
+          backgroundColor: appBarColor,
           actions: [
-            RaisedButton(
+            IconButton(
+              icon: Icon(Icons.logout),
               onPressed: () async {
                 await context.read<AuthProvider>().logout();
               },
-              child: Text("Sign Out"),
             )
           ],
         ),
@@ -85,49 +92,69 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.5,
-                      decoration: BoxDecoration(
-                        color: lowerHalfColor,
-                        border: Border.all(
-                          width: 3,
-                          color: borderColor,
-                          style: BorderStyle.solid,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RequestBlood(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        decoration: BoxDecoration(
+                          color: lowerHalfColor,
+                          border: Border.all(
+                            width: 3,
+                            color: borderColor,
+                            style: BorderStyle.solid,
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(50),
+                            topLeft: Radius.circular(50),
+                            topRight: Radius.circular(0),
+                            bottomRight: Radius.circular(0),
+                          ),
                         ),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(50),
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(0),
-                          bottomRight: Radius.circular(0),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Request Blood",
-                          style: mediumTextStyle(),
+                        child: Center(
+                          child: Text(
+                            "Request Blood",
+                            style: homePageButtonTextStyle(),
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.5,
-                      decoration: BoxDecoration(
-                        color: lowerHalfColor,
-                        border: Border.all(
-                          width: 3,
-                          color: borderColor,
-                          style: BorderStyle.solid,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DonateBlood(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        decoration: BoxDecoration(
+                          color: lowerHalfColor,
+                          border: Border.all(
+                            width: 3,
+                            color: borderColor,
+                            style: BorderStyle.solid,
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(50),
+                            topRight: Radius.circular(50),
+                            topLeft: Radius.circular(0),
+                            bottomLeft: Radius.circular(0),
+                          ),
                         ),
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(50),
-                          topRight: Radius.circular(50),
-                          topLeft: Radius.circular(0),
-                          bottomLeft: Radius.circular(0),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Donate Blood",
-                          style: mediumTextStyle(),
+                        child: Center(
+                          child: Text(
+                            "Donate Blood",
+                            style: homePageButtonTextStyle(),
+                          ),
                         ),
                       ),
                     )

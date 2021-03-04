@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourdonor/components/formbutton.dart';
+import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 
@@ -18,6 +19,14 @@ class _DonateBloodState extends State<DonateBlood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Know Your Donor",
+          style: appBarTextStyle(),
+        ),
+        elevation: 0,
+        backgroundColor: appBarColor,
+      ),
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourdonor/components/loader.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:knowyourdonor/components/textbox.dart';
@@ -9,7 +11,6 @@ import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/views/home_page.dart';
 import 'package:knowyourdonor/views/register_page.dart';
-import 'package:provider/provider.dart';
 
 // Stateful Widget that handles Email Login Task.
 class LoginPage extends StatefulWidget {
@@ -25,6 +26,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of(context);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -111,11 +114,13 @@ class _LoginPageState extends State<LoginPage> {
                             }
                           }
                         },
-                        child: Button(
-                          context: context,
-                          buttonText: "Login",
-                          colorDifference: 60,
-                        ),
+                        child: (authProvider.authState == AuthState.LoggingIn)
+                            ? Loader()
+                            : Button(
+                                context: context,
+                                buttonText: "Login",
+                                colorDifference: 60,
+                              ),
                       ),
                       SizedBox(
                         height: 10,
