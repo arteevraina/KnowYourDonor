@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourdonor/components/loader.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -24,6 +25,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of(context);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -110,11 +113,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                           }
                         },
-                        child: Button(
-                          context: context,
-                          buttonText: "Register",
-                          colorDifference: 60,
-                        ),
+                        child: (authProvider.authState == AuthState.Registering)
+                            ? Loader()
+                            : Button(
+                                context: context,
+                                buttonText: "Register",
+                                colorDifference: 60,
+                              ),
                       ),
                       SizedBox(
                         height: 10,
