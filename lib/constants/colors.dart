@@ -13,6 +13,6 @@ const Color appBarColor = Color(0xFFE94F37);
 const Color appBarTitleColor = Color(0xFFF6F7EB);
 
 // Colors for Home Page.
-const Color upperHalfColor = Color(0xFFE94F37);
-const Color lowerHalfColor = Color(0xFFF6F7EB);
+const upperHalfColor = Color(0xFFE94F37);
+const lowerHalfColor = Color(0xFFF6F7EB);
 const Color borderColor = Color(0xFF44BBA4);

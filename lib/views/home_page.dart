@@ -13,13 +13,18 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Testing"),
+          title: Text(
+            "Know Your Donor",
+            style: appBarTextStyle(),
+          ),
+          elevation: 0,
+          backgroundColor: appBarColor,
           actions: [
-            RaisedButton(
+            IconButton(
+              icon: Icon(Icons.logout),
               onPressed: () async {
                 await context.read<AuthProvider>().logout();
               },
-              child: Text("Sign Out"),
             )
           ],
         ),
@@ -104,7 +109,7 @@ class HomePage extends StatelessWidget {
                       child: Center(
                         child: Text(
                           "Request Blood",
-                          style: mediumTextStyle(),
+                          style: homePageButtonTextStyle(),
                         ),
                       ),
                     ),
@@ -127,7 +132,7 @@ class HomePage extends StatelessWidget {
                       child: Center(
                         child: Text(
                           "Donate Blood",
-                          style: mediumTextStyle(),
+                          style: homePageButtonTextStyle(),
                         ),
                       ),
                     )

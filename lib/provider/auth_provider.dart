@@ -77,6 +77,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
+  // Function for logging out user.
   Future logout() async {
     await _auth.signOut();
     _authState = AuthState.NotLoggedIn;
