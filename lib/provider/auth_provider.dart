@@ -10,6 +10,7 @@ enum AuthState {
   NotLoggedIn,
   LoggingIn,
   LoggedIn,
+  LoggedOut,
 }
 
 // Auth Provider Class.
@@ -78,10 +79,15 @@ class AuthProvider with ChangeNotifier {
   }
 
   // Function for logging out user.
-  Future logout() async {
-    await _auth.signOut();
-    _authState = AuthState.NotLoggedIn;
-    notifyListeners();
-    return Future.delayed(Duration.zero);
+  Future<bool> logout() async {
+    try {
+      await _auth.signOut();
+      _authState = AuthState.LoggedOut;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 }

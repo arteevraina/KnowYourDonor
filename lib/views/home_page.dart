@@ -7,6 +7,8 @@ import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/views/donate_blood_form.dart';
 import 'package:knowyourdonor/views/request_blood_form.dart';
+import 'package:knowyourdonor/views/login_page.dart';
+
 
 // Screen for Home Page of the App.
 class HomePage extends StatelessWidget {
@@ -25,7 +27,14 @@ class HomePage extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.logout),
               onPressed: () async {
-                await context.read<AuthProvider>().logout();
+                if (await context.read<AuthProvider>().logout()) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginPage(),
+                    ),
+                  );
+                }
               },
             )
           ],
