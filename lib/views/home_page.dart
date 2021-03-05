@@ -9,7 +9,6 @@ import 'package:knowyourdonor/views/donate_blood_form.dart';
 import 'package:knowyourdonor/views/request_blood_form.dart';
 import 'package:knowyourdonor/views/login_page.dart';
 
-
 // Screen for Home Page of the App.
 class HomePage extends StatelessWidget {
   @override
@@ -96,80 +95,81 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               Center(
-                  child: Container(
-                height: MediaQuery.of(context).size.height / 8,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => RequestBlood(),
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 8,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RequestBlood(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width / 2.5,
+                          decoration: BoxDecoration(
+                            color: lowerHalfColor,
+                            border: Border.all(
+                              width: 3,
+                              color: borderColor,
+                              style: BorderStyle.solid,
+                            ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(50),
+                              topLeft: Radius.circular(50),
+                              topRight: Radius.circular(0),
+                              bottomRight: Radius.circular(0),
+                            ),
                           ),
-                        );
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        decoration: BoxDecoration(
-                          color: lowerHalfColor,
-                          border: Border.all(
-                            width: 3,
-                            color: borderColor,
-                            style: BorderStyle.solid,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(50),
-                            topLeft: Radius.circular(50),
-                            topRight: Radius.circular(0),
-                            bottomRight: Radius.circular(0),
-                          ),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Request Blood",
-                            style: homePageButtonTextStyle(),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DonateBlood(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        decoration: BoxDecoration(
-                          color: lowerHalfColor,
-                          border: Border.all(
-                            width: 3,
-                            color: borderColor,
-                            style: BorderStyle.solid,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(50),
-                            topRight: Radius.circular(50),
-                            topLeft: Radius.circular(0),
-                            bottomLeft: Radius.circular(0),
-                          ),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Donate Blood",
-                            style: homePageButtonTextStyle(),
+                          child: Center(
+                            child: Text(
+                              "Request Blood",
+                              style: homePageButtonTextStyle(),
+                            ),
                           ),
                         ),
                       ),
-                    )
-                  ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DonateBlood(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width / 2.5,
+                          decoration: BoxDecoration(
+                            color: lowerHalfColor,
+                            border: Border.all(
+                              width: 3,
+                              color: borderColor,
+                              style: BorderStyle.solid,
+                            ),
+                            borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(50),
+                              topRight: Radius.circular(50),
+                              topLeft: Radius.circular(0),
+                              bottomLeft: Radius.circular(0),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Donate Blood",
+                              style: homePageButtonTextStyle(),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              )),
+              ),
             ],
           ),
         ),
