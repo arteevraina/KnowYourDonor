@@ -34,6 +34,8 @@ class MyApp extends StatelessWidget {
 
 Widget _showScreen(BuildContext context) {
   switch (context.watch<AuthProvider>().authState) {
+    case AuthState.LoggedOut:
+      return LoginPage();
     case AuthState.Initial:
     case AuthState.NotRegistered:
       return RegisterPage();
