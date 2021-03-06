@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:knowyourdonor/provider/bottom_navigation_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:knowyourdonor/views/home_page.dart';
@@ -13,6 +14,9 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (_) => AuthProvider.instance(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => BottomNavigationBarProvider(),
     )
   ], child: MyApp()));
 }
