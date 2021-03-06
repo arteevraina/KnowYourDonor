@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                         color: lowerHalfColor,
                       ),
                       child: CarouselSlider(
-                        options: CarouselOptions(height: 200.0),
+                        options: CarouselOptions(height: 150.0),
                         items: [1, 2, 3, 4, 5].map((i) {
                           return Builder(
                             builder: (BuildContext context) {
@@ -166,6 +166,38 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       )
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 0,
+                bottom: 0,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: BottomNavigationBar(
+                    backgroundColor: backgroundColor,
+                    selectedItemColor: selectedItemColor,
+                    unselectedItemColor: unSelectedItemColor,
+                    items: const <BottomNavigationBarItem>[
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.home,
+                        ),
+                        label: "Home",
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.business,
+                        ),
+                        label: 'Business',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.school,
+                        ),
+                        label: 'School',
+                      ),
                     ],
                   ),
                 ),
