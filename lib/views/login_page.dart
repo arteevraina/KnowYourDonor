@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:knowyourdonor/components/loader.dart';
+import 'package:knowyourdonor/views/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';
+import 'package:knowyourdonor/components/loader.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/constants/colors.dart';
-import 'package:knowyourdonor/provider/auth_provider.dart';
-import 'package:knowyourdonor/views/home_page.dart';
 import 'package:knowyourdonor/views/register_page.dart';
 
 // Stateful Widget that handles Email Login Task.
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => HomePage(),
+                                  builder: (context) => Wrapper(),
                                 ),
                               );
                             }
