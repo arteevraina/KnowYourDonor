@@ -69,15 +69,15 @@ class _WrapperState extends State<Wrapper> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.business,
+                Icons.list,
               ),
-              label: 'Business',
+              label: 'Recipient List',
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.school,
+                Icons.list_alt_outlined,
               ),
-              label: 'School',
+              label: 'Donor List',
             ),
           ],
         ),

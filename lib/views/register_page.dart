@@ -9,7 +9,6 @@ import 'package:knowyourdonor/components/loader.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/constants/colors.dart';
-
 import 'package:knowyourdonor/views/login_page.dart';
 
 // Stateful Widget that handles Email Register Task.
