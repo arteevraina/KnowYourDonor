@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:knowyourdonor/provider/bottom_navigation_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:knowyourdonor/views/home_page.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
+import 'package:knowyourdonor/provider/bottom_navigation_provider.dart';
 import 'package:knowyourdonor/views/login_page.dart';
 import 'package:knowyourdonor/views/register_page.dart';
-import 'package:knowyourdonor/provider/auth_provider.dart';
+import 'package:knowyourdonor/views/wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,7 +48,7 @@ Widget _showScreen(BuildContext context) {
     case AuthState.Registered:
       return LoginPage();
     case AuthState.LoggedIn:
-      return HomePage();
+      return Wrapper();
     case AuthState.Registering:
       return RegisterPage();
     case AuthState.LoggingIn:
