@@ -13,6 +13,7 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
   AnimationController controller;
   // ignore: non_constant_identifier_names
   Animation<double> rotation_animation;
+
   @override
   void initState() {
     super.initState();
@@ -21,9 +22,19 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
     rotation_animation = Tween<double>(
       begin: 0.0,
       end: 1.0,
-    ).animate(CurvedAnimation(
-        parent: controller, curve: Interval(0.0, 1.0, curve: Curves.linear)));
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Interval(0.0, 1.0, curve: Curves.linear),
+      ),
+    );
     controller.repeat();
+  }
+
+  @override
+  dispose() {
+    controller.dispose(); // you need this
+    super.dispose();
   }
 
   @override

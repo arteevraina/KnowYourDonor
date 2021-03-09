@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
+import 'package:knowyourdonor/models/Seeker.dart';
+import 'package:knowyourdonor/components/loader.dart';
 import 'package:knowyourdonor/components/formbutton.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
+import 'package:knowyourdonor/repository/seekerRepository.dart';
 
 class RequestBlood extends StatefulWidget {
   @override
@@ -13,6 +18,8 @@ class RequestBlood extends StatefulWidget {
 class _RequestBloodState extends State<RequestBlood> {
   // Unique key for the validation of the form.
   final _formKey = GlobalKey<FormState>();
+
+  // Text Controllers for Forms.
   TextEditingController _seekerNameController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
   TextEditingController _bloodgroupController = TextEditingController();
@@ -21,6 +28,9 @@ class _RequestBloodState extends State<RequestBlood> {
 
   @override
   Widget build(BuildContext context) {
+    // Provider for SeekerRepository.
+    SeekerRepository seekerProvider = Provider.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -137,15 +147,44 @@ class _RequestBloodState extends State<RequestBlood> {
                     SizedBox(
                       height: 16.0,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        _formKey.currentState.validate();
-                      },
-                      child: FormButton(
-                        buttonText: "Post",
-                        colorDifference: 60,
-                      ),
-                    ),
+                    (seekerProvider.state == SubmitState.Submitting)
+                        ? Loader()
+                        : GestureDetector(
+                            onTap: () async {
+                              if (_formKey.currentState.validate()) {
+                                /// Create [instance] of [Seeker Model]
+                                /// and then post it using [SeekerRepository]
+                                /// function.
+                                Seeker seeker = Seeker(
+                                  _seekerNameController.text,
+                                  _addressController.text,
+                                  _bloodgroupController.text,
+                                  int.parse(_unitsController.text),
+                                  int.parse(_phoneNumberController.text),
+                                );
+
+                                if (await context
+                                    .read<SeekerRepository>()
+                                    .postSeeker(seeker)) {
+                                  /// If everything goes fine
+                                  /// then show toast.
+                                  Fluttertoast.showToast(
+                                    msg: "Request Created",
+                                  );
+                                } else {
+                                  /// Else toast that Request is
+                                  /// rejected.
+                                  Fluttertoast.showToast(
+                                    msg: "Request Rejected",
+                                  );
+                                }
+                              }
+                            },
+                            child: FormButton(
+                              buttonText: "Post",
+                              colorDifference: 60,
+                            ),
+                          ),
                   ],
                 ),
               ),
