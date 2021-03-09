@@ -1,6 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:knowyourdonor/constants/colors.dart';
-import 'package:knowyourdonor/constants/text_styles.dart';
 
 class DonorsList extends StatefulWidget {
   @override
@@ -8,55 +10,28 @@ class DonorsList extends StatefulWidget {
 }
 
 class _DonorsListState extends State<DonorsList> {
+  Completer<GoogleMapController> _controller = Completer();
+
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
+
+  /// Map orientation and position.
+  static final CameraPosition _myLocation = CameraPosition(
+    target: LatLng(32.775139, 74.830391),
+    zoom: 12,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.symmetric(
-            horizontal: 20,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 150,
-                width: double.maxFinite,
-                child: Card(
-                  elevation: 5,
-                  child: Padding(
-                    padding: EdgeInsets.all(30),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Arteev Raina",
-                              style: mediumTextStyle(),
-                            ),
-                            Text(
-                              "A+",
-                              style: mediumTextStyle(),
-                            ),
-                          ],
-                        ),
-                        Center(
-                          child: Text(
-                            "7006480030",
-                            style: mediumTextStyle(),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        child: GoogleMap(
+          initialCameraPosition: _myLocation,
+          mapType: MapType.normal,
+          onMapCreated: (GoogleMapController controller) {
+            _controller.complete(controller);
+          },
         ),
       ),
     );

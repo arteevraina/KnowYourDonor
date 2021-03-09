@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:knowyourdonor/models/Seeker.dart';
+import 'package:knowyourdonor/models/Donor.dart';
 
 /// Different Submission states.
 enum SubmitState {
@@ -11,8 +11,8 @@ enum SubmitState {
 
 /// Repository containing functions for communication with
 /// [Cloud Firestore].
-class SeekerRepository with ChangeNotifier {
-  SeekerRepository(this._firestore) : assert(_firestore != null);
+class DonorRepository with ChangeNotifier {
+  DonorRepository(this._firestore) : assert(_firestore != null);
 
   final FirebaseFirestore _firestore;
 
@@ -20,14 +20,14 @@ class SeekerRepository with ChangeNotifier {
 
   SubmitState get state => _state;
 
-  Future<bool> postSeeker(Seeker seeker) async {
+  Future<bool> postDonor(Donor seeker) async {
     try {
       /// Converts seeker to Map using [toJson()] method and adds it
       /// to firebase while return the document refernece to [document].
       _state = SubmitState.Submitting;
       notifyListeners();
 
-      await _firestore.collection('seekers').add(seeker.toJson());
+      await _firestore.collection('donors').add(seeker.toJson());
 
       _state = SubmitState.Submitted;
       notifyListeners();
@@ -40,18 +40,17 @@ class SeekerRepository with ChangeNotifier {
     }
   }
 
-  Stream<List<Seeker>> getSeekers() {
+  Stream<List<Donor>> getDonors() {
     /// Gets the snapshots from [Cloud Firestore]
     /// and return them as List.
     try {
       return _firestore.collection('seekers').snapshots().map((snapshot) {
         return snapshot.docs
             .map(
-              (document) => Seeker(
+              (document) => Donor(
                 document['name'],
                 document['address'],
                 document['bloodGroup'],
-                document['units'],
                 document['phoneNumber'],
               ),
             )
