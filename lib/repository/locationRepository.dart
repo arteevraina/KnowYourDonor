@@ -2,17 +2,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:google_maps_webservice/places.dart';
-import 'package:knowyourdonor/credentials.dart';
 import 'package:knowyourdonor/models/Place.dart';
 
-const kGoogleApiKey = API_KEY;
-GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
+// const kGoogleApiKey = API_KEY;
+GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: "");
 
 class Location {
   Future<Place> predictionScreen(BuildContext context) async {
     Prediction p = await PlacesAutocomplete.show(
       context: context,
-      apiKey: kGoogleApiKey,
+      apiKey: "",
       onError: onError,
       mode: Mode.fullscreen,
       language: "eng",
