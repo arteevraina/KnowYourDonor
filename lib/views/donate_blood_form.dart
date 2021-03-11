@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:knowyourdonor/models/Donor.dart';
 import 'package:knowyourdonor/components/loader.dart';
 import 'package:knowyourdonor/components/formbutton.dart';
@@ -89,7 +90,7 @@ class _DonateBloodState extends State<DonateBlood> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Address Line",
-                        hintText: "Enter your address",
+                        hintText: "Street Name, City Name",
                         prefixIcon: Icon(
                           Icons.home,
                         ),
@@ -134,6 +135,16 @@ class _DonateBloodState extends State<DonateBlood> {
                         : GestureDetector(
                             onTap: () async {
                               if (_formKey.currentState.validate()) {
+                                /// First get the [lat] and [long] of the
+                                /// address and then create [instance].
+                                List<Location> locations =
+                                    await locationFromAddress(
+                                  _addressController.text,
+                                );
+
+                                // Get the first item in the list.
+                                Location coordinates = locations.first;
+
                                 /// Create [instance] of [Donor Model]
                                 /// and then post it using [DonorRepository]
                                 /// function.
@@ -142,6 +153,8 @@ class _DonateBloodState extends State<DonateBlood> {
                                   _addressController.text,
                                   _bloodgroupController.text,
                                   int.parse(_phoneNumberController.text),
+                                  coordinates.latitude,
+                                  coordinates.longitude,
                                 );
 
                                 if (await context

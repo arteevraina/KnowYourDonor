@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:knowyourdonor/models/Seeker.dart';
 import 'package:knowyourdonor/components/loader.dart';
 import 'package:knowyourdonor/components/formbutton.dart';
@@ -9,7 +10,6 @@ import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/repository/seekerRepository.dart';
-import 'package:knowyourdonor/repository/locationRepository.dart';
 
 class RequestBlood extends StatefulWidget {
   @override
@@ -26,9 +26,6 @@ class _RequestBloodState extends State<RequestBlood> {
   TextEditingController _bloodgroupController = TextEditingController();
   TextEditingController _unitsController = TextEditingController();
   TextEditingController _phoneNumberController = TextEditingController();
-
-  // Instance for Location Class.
-  Location location = Location();
 
   @override
   Widget build(BuildContext context) {
@@ -89,24 +86,15 @@ class _RequestBloodState extends State<RequestBlood> {
                     SizedBox(
                       height: 8.0,
                     ),
-                    GestureDetector(
-                      onTap: () async {
-                        /// Calling [Prediction Screen] for
-                        /// selecting address with [lat] and [long].
-                        await location.predictionScreen(context);
-                        print("display prediction screen called");
-                      },
-                      child: TextFormField(
-                        enabled: false,
-                        controller: _addressController,
-                        validator: addressValidator,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: "Address Line",
-                          hintText: "Enter your address",
-                          prefixIcon: Icon(
-                            Icons.home,
-                          ),
+                    TextFormField(
+                      controller: _addressController,
+                      validator: addressValidator,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: "Address Line",
+                        hintText: "Street Name, City Name",
+                        prefixIcon: Icon(
+                          Icons.home,
                         ),
                       ),
                     ),
@@ -165,6 +153,16 @@ class _RequestBloodState extends State<RequestBlood> {
                         : GestureDetector(
                             onTap: () async {
                               if (_formKey.currentState.validate()) {
+                                /// First get the [lat] and [long] of the
+                                /// address and then create [instance].
+                                List<Location> locations =
+                                    await locationFromAddress(
+                                  _addressController.text,
+                                );
+
+                                // Get the first item in the list.
+                                Location coordinates = locations.first;
+
                                 /// Create [instance] of [Seeker Model]
                                 /// and then post it using [SeekerRepository]
                                 /// function.
@@ -174,6 +172,8 @@ class _RequestBloodState extends State<RequestBlood> {
                                   _bloodgroupController.text,
                                   int.parse(_unitsController.text),
                                   int.parse(_phoneNumberController.text),
+                                  coordinates.latitude,
+                                  coordinates.longitude,
                                 );
 
                                 if (await context

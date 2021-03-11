@@ -53,6 +53,8 @@ class SeekerRepository with ChangeNotifier {
                 document['bloodGroup'],
                 document['units'],
                 document['phoneNumber'],
+                document['latitude'],
+                document['longitude'],
               ),
             )
             .toList();

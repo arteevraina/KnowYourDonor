@@ -6,6 +6,8 @@ class Seeker {
     this.bloodGroup,
     this.units,
     this.phoneNumber,
+    this.lat,
+    this.long,
   );
 
   Map<String, dynamic> toJson() {
@@ -15,6 +17,8 @@ class Seeker {
       'bloodGroup': bloodGroup,
       'units': units,
       'phoneNumber': phoneNumber,
+      'latitude': lat,
+      'longitude': long,
     };
   }
 
@@ -23,4 +27,6 @@ class Seeker {
   final String bloodGroup;
   final int units;
   final int phoneNumber;
+  final double lat;
+  final double long;
 }

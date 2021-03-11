@@ -52,6 +52,8 @@ class DonorRepository with ChangeNotifier {
                 document['address'],
                 document['bloodGroup'],
                 document['phoneNumber'],
+                document['latitude'],
+                document['longitude'],
               ),
             )
             .toList();
