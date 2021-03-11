@@ -9,6 +9,7 @@ import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/validators.dart';
 import 'package:knowyourdonor/repository/seekerRepository.dart';
+import 'package:knowyourdonor/repository/locationRepository.dart';
 
 class RequestBlood extends StatefulWidget {
   @override
@@ -25,6 +26,9 @@ class _RequestBloodState extends State<RequestBlood> {
   TextEditingController _bloodgroupController = TextEditingController();
   TextEditingController _unitsController = TextEditingController();
   TextEditingController _phoneNumberController = TextEditingController();
+
+  // Instance for Location Class.
+  Location location = Location();
 
   @override
   Widget build(BuildContext context) {
@@ -85,15 +89,24 @@ class _RequestBloodState extends State<RequestBlood> {
                     SizedBox(
                       height: 8.0,
                     ),
-                    TextFormField(
-                      controller: _addressController,
-                      validator: addressValidator,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Address Line",
-                        hintText: "Enter your address",
-                        prefixIcon: Icon(
-                          Icons.home,
+                    GestureDetector(
+                      onTap: () async {
+                        /// Calling [Prediction Screen] for
+                        /// selecting address with [lat] and [long].
+                        await location.predictionScreen(context);
+                        print("display prediction screen called");
+                      },
+                      child: TextFormField(
+                        enabled: false,
+                        controller: _addressController,
+                        validator: addressValidator,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Address Line",
+                          hintText: "Enter your address",
+                          prefixIcon: Icon(
+                            Icons.home,
+                          ),
                         ),
                       ),
                     ),

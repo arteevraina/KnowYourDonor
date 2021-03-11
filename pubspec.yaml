@@ -23,6 +23,7 @@ dependencies:
   provider: ^4.3.2+3
   fluttertoast: ^7.1.6
   carousel_slider: ^3.0.0
+  flutter_google_places: ^0.2.8
 
 dev_dependencies:
   flutter_test:
