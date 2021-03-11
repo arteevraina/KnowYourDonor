@@ -5,6 +5,8 @@ class Donor {
     this.address,
     this.bloodGroup,
     this.phoneNumber,
+    this.lat,
+    this.long,
   );
 
   Map<String, dynamic> toJson() {
@@ -13,6 +15,8 @@ class Donor {
       'address': address,
       'bloodGroup': bloodGroup,
       'phoneNumber': phoneNumber,
+      'latitude': lat,
+      'longitude': long,
     };
   }
 
@@ -20,4 +24,6 @@ class Donor {
   final String address;
   final String bloodGroup;
   final int phoneNumber;
+  final double lat;
+  final double long;
 }

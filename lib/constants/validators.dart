@@ -78,12 +78,15 @@ Function(String) emailValidator = (String emailAddress) {
 
 // Function for validating address.
 Function(String) addressValidator = (String address) {
+  String p = r"^[#.0-9a-zA-Z\s,-]+$";
+  RegExp regExp = RegExp(p);
+
   if (address.isEmpty) {
     return "Address is empty";
   }
 
-  if (address.length < 5) {
-    return "Address cannot be less than 5 characters";
+  if (!regExp.hasMatch(address)) {
+    return "Address is not valid";
   }
 
   return null;
