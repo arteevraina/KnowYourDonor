@@ -63,3 +63,13 @@ TextStyle homePageButtonTextStyle() {
     ),
   );
 }
+
+// Text Style for bloodGroup inside Container.
+TextStyle bloodGroupTextStyle() {
+  return GoogleFonts.josefinSlab(
+    textStyle: TextStyle(color: bloodGroupColor),
+    letterSpacing: 2,
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+  );
+}
