@@ -13,9 +13,16 @@ const Color appBarColor = Color(0xFFE94F37);
 const Color appBarTitleColor = Color(0xFFF6F7EB);
 
 // Colors for Home Page.
-const upperHalfColor = Color(0xFFE94F37);
-const lowerHalfColor = Color(0xFFF6F7EB);
-const borderColor = Color(0xFF44BBA4);
-const floatingButtonColor = Color(0xFFE94F37);
-const selectedItemColor = Color(0xFF3F88C5);
-const unSelectedItemColor = Color(0xFF393E41);
+const Color upperHalfColor = Color(0xFFE94F37);
+const Color lowerHalfColor = Color(0xFFF6F7EB);
+const Color borderColor = Color(0xFF44BBA4);
+const Color floatingButtonColor = Color(0xFFE94F37);
+const Color selectedItemColor = Color(0xFF3F88C5);
+const Color unSelectedItemColor = Color(0xFF393E41);
+
+// Colors for Dialog Box.
+const Color circleColor = Color(0xFFE94F37);
+const Color bloodGroupColor = Color(0xFFF6F7EB);
+const Color iconColor = Color(0xFF44BBA4);
+const Color buttonBackgroundColor = Color(0xFF393E41);
+const Color textColor = Color(0xFF44BBA4);

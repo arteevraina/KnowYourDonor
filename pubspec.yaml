@@ -24,6 +24,7 @@ dependencies:
   fluttertoast: ^7.1.6
   carousel_slider: ^3.0.0
   geocoding: ^1.0.5
+  geolocator: ^6.2.0
 
 dev_dependencies:
   flutter_test:
