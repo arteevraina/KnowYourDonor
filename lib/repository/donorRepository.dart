@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:knowyourdonor/models/Donor.dart';
 
 /// Different Submission states.
@@ -40,24 +40,21 @@ class DonorRepository with ChangeNotifier {
     }
   }
 
-  Stream<List<Donor>> getDonors() {
+  Stream<QuerySnapshot> getDonors() {
     /// Gets the snapshots from [Cloud Firestore]
-    /// and return them as List.
+    /// and returns them as List.
     try {
-      return _firestore.collection('seekers').snapshots().map((snapshot) {
-        return snapshot.docs
-            .map(
-              (document) => Donor(
-                document['name'],
-                document['address'],
-                document['bloodGroup'],
-                document['phoneNumber'],
-                document['latitude'],
-                document['longitude'],
-              ),
-            )
-            .toList();
-      });
+      return _firestore.collection('donors').snapshots();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<DocumentSnapshot> getDonorById(String id) async {
+    /// Gets the document from [Cloud Firestore]
+    /// and returns.
+    try {
+      return _firestore.collection('donors').doc(id).get();
     } catch (e) {
       return null;
     }
