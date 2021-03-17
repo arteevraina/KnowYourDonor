@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
     ]);
     return MaterialApp(
       home: _showScreen(context),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

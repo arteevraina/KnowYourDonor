@@ -73,3 +73,24 @@ TextStyle bloodGroupTextStyle() {
     fontWeight: FontWeight.bold,
   );
 }
+
+// Text Style for Drawer Header.
+TextStyle drawerHeaderTextStyle() {
+  return GoogleFonts.josefinSlab(
+    textStyle: TextStyle(color: headerTextColor),
+    letterSpacing: 0,
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+  );
+}
+
+// Text Style for Drawer List Tiles.
+TextStyle drawerListTextStyle() {
+  return GoogleFonts.josefinSlab(
+    textStyle: TextStyle(
+      color: drawerListTextColor,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}

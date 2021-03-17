@@ -2,6 +2,7 @@
 class Donor {
   Donor(
     this.name,
+    this.email,
     this.address,
     this.bloodGroup,
     this.phoneNumber,
@@ -12,6 +13,7 @@ class Donor {
   Map<String, dynamic> toJson() {
     return {
       'name': name,
+      'email': email,
       'address': address,
       'bloodGroup': bloodGroup,
       'phoneNumber': phoneNumber,
@@ -21,6 +23,7 @@ class Donor {
   }
 
   final String name;
+  final String email;
   final String address;
   final String bloodGroup;
   final int phoneNumber;

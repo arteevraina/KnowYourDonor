@@ -1,16 +1,19 @@
 import 'dart:async';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/components/loader.dart';
 import 'package:knowyourdonor/components/alertButton.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/repository/donorRepository.dart';
-import 'package:knowyourdonor/provider/donor_location_provider.dart';
+import 'package:knowyourdonor/repository/location_repository.dart';
 
 class DonorsList extends StatefulWidget {
   @override
@@ -29,8 +32,7 @@ class _DonorsListState extends State<DonorsList> {
   double longitude;
   int phoneNumber;
 
-  final DonorLocationRepository _donorLocationRepository =
-      DonorLocationRepository();
+  final LocationRepository _donorLocationRepository = LocationRepository();
 
   Stream<QuerySnapshot> donors;
 
@@ -60,13 +62,20 @@ class _DonorsListState extends State<DonorsList> {
   void fetchDonors() async {
     donors = context.read<DonorRepository>().getDonors();
 
+    // Get the email of the user.
+    var email = context.read<AuthProvider>().user.email;
+
     /// Iterating over the list and calling [initMarker]
     /// for each document.
     donors.forEach(
       (element) {
         element.docs.forEach(
           (element) {
-            initMarker(element.data(), element.id);
+            // If user email and fetched don't match then
+            // initialise a marker.
+            if (email != element.data()['email']) {
+              initMarker(element.data(), element.id);
+            }
           },
         );
       },
@@ -83,7 +92,6 @@ class _DonorsListState extends State<DonorsList> {
     bloodGroup = doc["bloodGroup"];
     latitude = doc["latitude"];
     longitude = doc["longitude"];
-    longitude = doc["latitude"];
     phoneNumber = doc["phoneNumber"];
   }
 
@@ -148,7 +156,7 @@ class _DonorsListState extends State<DonorsList> {
                     return Stack(
                       children: [
                         GoogleMap(
-                          mapType: MapType.terrain,
+                          mapType: MapType.normal,
                           initialCameraPosition: CameraPosition(
                             target: LatLng(currentLat, currentLong),
                             zoom: 15,
@@ -252,8 +260,23 @@ class _DonorsListState extends State<DonorsList> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               GestureDetector(
-                                                onTap: () {
-                                                  print("Call");
+                                                onTap: () async {
+                                                  final Uri _phoneNumberURI =
+                                                      Uri(
+                                                    scheme: 'tel',
+                                                    path:
+                                                        phoneNumber.toString(),
+                                                  );
+                                                  await canLaunch(
+                                                          _phoneNumberURI
+                                                              .toString())
+                                                      ? await launch(
+                                                          _phoneNumberURI
+                                                              .toString())
+                                                      : Fluttertoast.showToast(
+                                                          msg:
+                                                              "Could not make a call",
+                                                        );
                                                 },
                                                 child: AlertButton(
                                                   "Call",
