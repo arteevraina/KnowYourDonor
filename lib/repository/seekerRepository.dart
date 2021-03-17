@@ -40,25 +40,21 @@ class SeekerRepository with ChangeNotifier {
     }
   }
 
-  Stream<List<Seeker>> getSeekers() {
+  Stream<QuerySnapshot> getSeekers() {
     /// Gets the snapshots from [Cloud Firestore]
-    /// and return them as List.
+    /// and returns them as List.
     try {
-      return _firestore.collection('seekers').snapshots().map((snapshot) {
-        return snapshot.docs
-            .map(
-              (document) => Seeker(
-                document['name'],
-                document['address'],
-                document['bloodGroup'],
-                document['units'],
-                document['phoneNumber'],
-                document['latitude'],
-                document['longitude'],
-              ),
-            )
-            .toList();
-      });
+      return _firestore.collection('seekers').snapshots();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<DocumentSnapshot> getSeekerById(String id) async {
+    /// Gets the document from [Cloud Firestore]
+    /// and returns.
+    try {
+      return _firestore.collection('seekers').doc(id).get();
     } catch (e) {
       return null;
     }

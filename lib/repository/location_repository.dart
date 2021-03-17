@@ -4,7 +4,7 @@ import 'package:geolocator/geolocator.dart';
 /// [Cloud Firestore].
 /// This class will help to fetch [Donor's] information.
 
-class DonorLocationRepository {
+class LocationRepository {
   Future<Position> getCurrentLocation() async {
     Position res = await Geolocator.getCurrentPosition();
     return res;

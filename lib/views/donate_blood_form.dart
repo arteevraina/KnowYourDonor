@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:knowyourdonor/models/Donor.dart';
+import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/components/loader.dart';
 import 'package:knowyourdonor/components/formbutton.dart';
 import 'package:knowyourdonor/constants/colors.dart';
@@ -29,6 +30,9 @@ class _DonateBloodState extends State<DonateBlood> {
   Widget build(BuildContext context) {
     // Provider for DonorRepository.
     DonorRepository donorProvider = Provider.of(context);
+
+    // Get the user email ID.
+    var email = Provider.of<AuthProvider>(context).user.email;
 
     return Scaffold(
       appBar: AppBar(
@@ -150,6 +154,7 @@ class _DonateBloodState extends State<DonateBlood> {
                                 /// function.
                                 Donor donor = Donor(
                                   _donorNameController.text,
+                                  email,
                                   _addressController.text,
                                   _bloodgroupController.text,
                                   int.parse(_phoneNumberController.text),
@@ -165,6 +170,12 @@ class _DonateBloodState extends State<DonateBlood> {
                                   Fluttertoast.showToast(
                                     msg: "Post Created",
                                   );
+
+                                  // Clear all the text fields.
+                                  _donorNameController.clear();
+                                  _addressController.clear();
+                                  _bloodgroupController.clear();
+                                  _phoneNumberController.clear();
                                 } else {
                                   /// Else toast that Request is
                                   /// rejected.

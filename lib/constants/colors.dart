@@ -24,5 +24,11 @@ const Color unSelectedItemColor = Color(0xFF393E41);
 const Color circleColor = Color(0xFFE94F37);
 const Color bloodGroupColor = Color(0xFFF6F7EB);
 const Color iconColor = Color(0xFF44BBA4);
-const Color buttonBackgroundColor = Color(0xFF393E41);
+const Color buttonBackgroundColor = Color(0xFF256b5d);
 const Color textColor = Color(0xFF44BBA4);
+
+// Colors for Drawer.
+const Color headerColor = Color(0xFFE94F37);
+const Color headerTextColor = Color(0xFFF6F7EB);
+const Color drawerIconColor = Color(0xFF393E41);
+const Color drawerListTextColor = Color(0xFF393E41);
