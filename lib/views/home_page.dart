@@ -33,34 +33,78 @@ class HomePage extends StatelessWidget {
                     color: lowerHalfColor,
                   ),
                   child: CarouselSlider(
-                    options: CarouselOptions(height: 150.0),
-                    items: [1, 2, 3, 4, 5].map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration: BoxDecoration(
-                              color: lowerHalfColor,
-                              border: Border.all(
-                                width: 3,
-                                color: borderColor,
-                                style: BorderStyle.solid,
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(50.0),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'text $i',
-                                style: TextStyle(fontSize: 16.0),
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
+                    items: [
+                      //1st Image of Slider
+                      Container(
+                        margin: EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: DecorationImage(
+                            image: AssetImage("assets/Quote 1.jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+
+                      //2nd Image of Slider
+                      Container(
+                        margin: EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: DecorationImage(
+                            image: AssetImage("assets/Quote 2.jpeg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+
+                      //3rd Image of Slider
+                      Container(
+                        margin: EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: DecorationImage(
+                            image: AssetImage("assets/Quote 3.jpeg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+
+                      //4th Image of Slider
+                      Container(
+                        margin: EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: DecorationImage(
+                            image: AssetImage("assets/Quote 4.jpeg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+
+                      //5th Image of Slider
+                      Container(
+                        margin: EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: DecorationImage(
+                            image: AssetImage("assets/Quote 5.jpeg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
+                    //Slider Container properties
+                    options: CarouselOptions(
+                      height: 180.0,
+                      enlargeCenterPage: true,
+                      autoPlay: true,
+                      aspectRatio: 16 / 9,
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enableInfiniteScroll: true,
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      viewportFraction: 0.8,
+                    ),
                   ),
                 ),
               ),
@@ -68,7 +112,7 @@ class HomePage extends StatelessWidget {
           ),
           Center(
             child: Container(
-              height: MediaQuery.of(context).size.height / 8,
+              height: MediaQuery.of(context).size.height / 10,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
