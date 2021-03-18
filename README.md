@@ -14,7 +14,24 @@ Blood Donation app made for connecting donor with the patient. During this harsh
 
 ## Features:
 
-This project is still in development stage. So, feature requests are welcome. Feel free to open an issue if you have something in mind, it might make a large impact 💓
+* Email Authentication using Firebase.
+* Find donors and recipients in your near by area.
+* Volunteer as a Blood Donor or open a request for blood units.
+
+Feel free to open an issue if you have something in mind, it might make a large impact 💓
+
+## Screenshots 👀 :
+
+<p align="center">
+  <img src="readme_pictures/login.jpg" height="500px" width="230px">
+  <img src="readme_pictures/home_page.jpg" height="500px" width="230px">
+  <img src="readme_pictures/donor_form.jpg" height="500px" width="230px">
+  <img src="readme_pictures/dialog.jpg" height="500px" width="230px">
+  <img src="readme_pictures/seeker_map.jpg" height="500px" width="230px">
+  <img src="readme_pictures/side_drawer.jpg" height="500px" width="230px">
+  <img src="readme_pictures/seeker_form.jpg" height="500px" width="230px">
+
+
 
 ## How to setup locally ?
 
