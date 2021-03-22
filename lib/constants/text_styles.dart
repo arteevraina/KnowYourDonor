@@ -94,3 +94,14 @@ TextStyle drawerListTextStyle() {
     ),
   );
 }
+
+// Text Style for showing in Cards.
+TextStyle cardTextStyle() {
+  return GoogleFonts.josefinSlab(
+    textStyle: TextStyle(
+      color: headerColor,
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}

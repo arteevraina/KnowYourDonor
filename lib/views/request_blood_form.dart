@@ -28,6 +28,9 @@ class _RequestBloodState extends State<RequestBlood> {
   TextEditingController _unitsController = TextEditingController();
   TextEditingController _phoneNumberController = TextEditingController();
 
+  // Value for checkbox.
+  bool isPlatelet = false;
+
   @override
   Widget build(BuildContext context) {
     // Provider for SeekerRepository.
@@ -105,17 +108,38 @@ class _RequestBloodState extends State<RequestBlood> {
                     SizedBox(
                       height: 8.0,
                     ),
-                    TextFormField(
-                      controller: _bloodgroupController,
-                      validator: bloodGroupValidator,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Blood Group",
-                        hintText: "Enter your Blood Group",
-                        prefixIcon: Icon(
-                          Icons.category,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: TextFormField(
+                            controller: _bloodgroupController,
+                            validator: bloodGroupValidator,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Blood Group",
+                              hintText: "Blood Group",
+                              prefixIcon: Icon(
+                                Icons.category,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        Text(
+                          "Platelets \nRequired ?",
+                          style: smallTextStyle(),
+                        ),
+                        Checkbox(
+                          value: isPlatelet,
+                          onChanged: (bool newValue) {
+                            setState(() {
+                              isPlatelet = newValue;
+                            });
+                          },
+                          activeColor: errorTextColor,
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 8.0,
@@ -179,6 +203,7 @@ class _RequestBloodState extends State<RequestBlood> {
                                   int.parse(_phoneNumberController.text),
                                   coordinates.latitude,
                                   coordinates.longitude,
+                                  isPlatelet,
                                 );
 
                                 if (await context

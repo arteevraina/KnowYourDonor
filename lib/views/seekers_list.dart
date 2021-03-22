@@ -32,6 +32,7 @@ class _SeekersListState extends State<SeekersList> {
   double longitude;
   int phoneNumber;
   int units;
+  bool isPlatelets;
 
   final LocationRepository _seekerLocationRepository = LocationRepository();
 
@@ -93,6 +94,7 @@ class _SeekersListState extends State<SeekersList> {
     longitude = doc["longitude"];
     phoneNumber = doc["phoneNumber"];
     units = doc["units"];
+    isPlatelets = doc["isPlatelet"];
   }
 
   /// Function for initialising location [Markers].
@@ -181,14 +183,12 @@ class _SeekersListState extends State<SeekersList> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.23,
-                                      child: Positioned.fill(
-                                        child: Opacity(
-                                          opacity: 0.5,
-                                          child: SvgPicture.asset(
-                                            'assets/stethoscope.svg',
-                                            fit: BoxFit.fitWidth,
-                                            alignment: Alignment.center,
-                                          ),
+                                      child: Opacity(
+                                        opacity: 0.5,
+                                        child: SvgPicture.asset(
+                                          'assets/stethoscope.svg',
+                                          fit: BoxFit.fitWidth,
+                                          alignment: Alignment.center,
                                         ),
                                       ),
                                     ),
@@ -255,30 +255,43 @@ class _SeekersListState extends State<SeekersList> {
                                               ),
                                             ],
                                           ),
-                                          Align(
-                                            alignment: Alignment.bottomLeft,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(30),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(30),
+                                                  ),
+                                                  border: Border.all(
+                                                    color: Colors.red,
+                                                  ),
                                                 ),
-                                                border: Border.all(
-                                                  color: Colors.red,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8.0,
+                                                    right: 8.0,
+                                                    top: 4.0,
+                                                    bottom: 4.0,
+                                                  ),
+                                                  child: Text(
+                                                    "$units units",
+                                                    style: mediumTextStyle(),
+                                                  ),
                                                 ),
                                               ),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                  left: 8.0,
-                                                  right: 8.0,
-                                                  top: 4.0,
-                                                  bottom: 4.0,
-                                                ),
-                                                child: Text(
-                                                  "$units units",
-                                                  style: mediumTextStyle(),
-                                                ),
-                                              ),
-                                            ),
+                                              isPlatelets
+                                                  ? Text(
+                                                      "* Platelets Required!",
+                                                      style: cardTextStyle(),
+                                                    )
+                                                  : SizedBox(
+                                                      width: 0.0,
+                                                    ),
+                                            ],
                                           ),
                                           Row(
                                             mainAxisAlignment:
