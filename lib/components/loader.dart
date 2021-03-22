@@ -40,8 +40,8 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 100,
+      width: 80,
+      height: 80,
       child: Center(
         child: RotationTransition(
           turns: rotation_animation,

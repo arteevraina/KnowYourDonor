@@ -9,6 +9,7 @@ class Seeker {
     this.phoneNumber,
     this.lat,
     this.long,
+    this.isPlatelet,
   );
 
   Map<String, dynamic> toJson() {
@@ -21,6 +22,7 @@ class Seeker {
       'phoneNumber': phoneNumber,
       'latitude': lat,
       'longitude': long,
+      'isPlatelet': isPlatelet
     };
   }
 
@@ -32,4 +34,5 @@ class Seeker {
   final int phoneNumber;
   final double lat;
   final double long;
+  final bool isPlatelet;
 }
