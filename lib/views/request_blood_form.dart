@@ -81,6 +81,7 @@ class _RequestBloodState extends State<RequestBlood> {
                     TextFormField(
                       controller: _seekerNameController,
                       validator: userNameValidator,
+                      style: smallTextStyle(),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Seeker's Name",
@@ -96,6 +97,7 @@ class _RequestBloodState extends State<RequestBlood> {
                     TextFormField(
                       controller: _addressController,
                       validator: addressValidator,
+                      style: smallTextStyle(),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Address Line",
@@ -116,6 +118,7 @@ class _RequestBloodState extends State<RequestBlood> {
                           child: TextFormField(
                             controller: _bloodgroupController,
                             validator: bloodGroupValidator,
+                            style: smallTextStyle(),
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: "Blood Group",
@@ -148,6 +151,7 @@ class _RequestBloodState extends State<RequestBlood> {
                       controller: _unitsController,
                       validator: unitsValidator,
                       keyboardType: TextInputType.number,
+                      style: smallTextStyle(),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Units required",
@@ -164,6 +168,7 @@ class _RequestBloodState extends State<RequestBlood> {
                       controller: _phoneNumberController,
                       validator: phoneNumberValidator,
                       keyboardType: TextInputType.number,
+                      style: smallTextStyle(),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Phone Number",

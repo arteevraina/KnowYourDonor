@@ -10,8 +10,6 @@ on:
     branches:
       - master
 
-# on: push    # Default will running for every branch.
-
 jobs:
   build:
     # This job will run on ubuntu virtual machine
@@ -39,7 +37,7 @@ jobs:
       - run: flutter analyze .
 
       # Run widget tests for our flutter project.
-      # - run: flutter test
+      - run: flutter test
 
       # Build apk.
       # - run: flutter build apk

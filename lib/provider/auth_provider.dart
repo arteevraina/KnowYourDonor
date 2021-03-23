@@ -15,6 +15,8 @@ enum AuthState {
 
 // Auth Provider Class.
 class AuthProvider with ChangeNotifier {
+  /// Inject the FirebaseAuth here [Dependency Injection].
+  AuthProvider(this._auth) : assert(_auth != null);
   FirebaseAuth _auth;
   User _user;
 
@@ -49,6 +51,8 @@ class AuthProvider with ChangeNotifier {
         password: password,
       );
 
+      _authState = AuthState.LoggedIn;
+
       return true;
     } catch (e) {
       print(e);
@@ -68,6 +72,8 @@ class AuthProvider with ChangeNotifier {
         email: email,
         password: password,
       );
+
+      _authState = AuthState.Registered;
 
       return true;
     } catch (e) {

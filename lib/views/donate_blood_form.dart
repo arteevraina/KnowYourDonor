@@ -76,6 +76,7 @@ class _DonateBloodState extends State<DonateBlood> {
                     TextFormField(
                       controller: _donorNameController,
                       validator: userNameValidator,
+                      style: smallTextStyle(),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Donor's Name",
@@ -91,6 +92,7 @@ class _DonateBloodState extends State<DonateBlood> {
                     TextFormField(
                       controller: _addressController,
                       validator: addressValidator,
+                      style: smallTextStyle(),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Address Line",
@@ -106,6 +108,7 @@ class _DonateBloodState extends State<DonateBlood> {
                     TextFormField(
                       controller: _bloodgroupController,
                       validator: bloodGroupValidator,
+                      style: smallTextStyle(),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Blood Group",
@@ -122,6 +125,7 @@ class _DonateBloodState extends State<DonateBlood> {
                       controller: _phoneNumberController,
                       validator: phoneNumberValidator,
                       keyboardType: TextInputType.number,
+                      style: smallTextStyle(),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Phone Number",
