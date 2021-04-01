@@ -14,20 +14,25 @@ import 'package:knowyourdonor/repository/donorRepository.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(
-      create: (_) => AuthProvider.instance(),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => AuthProvider.instance(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SeekerRepository(FirebaseFirestore.instance),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DonorRepository(FirebaseFirestore.instance),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => BottomNavigationBarProvider(),
+        )
+      ],
+      child: MyApp(),
     ),
-    ChangeNotifierProvider(
-      create: (_) => SeekerRepository(FirebaseFirestore.instance),
-    ),
-    ChangeNotifierProvider(
-      create: (_) => DonorRepository(FirebaseFirestore.instance),
-    ),
-    ChangeNotifierProvider(
-      create: (_) => BottomNavigationBarProvider(),
-    )
-  ], child: MyApp()));
+  );
 }
 
 // Calling the Material App at the root of Widget Tree.
