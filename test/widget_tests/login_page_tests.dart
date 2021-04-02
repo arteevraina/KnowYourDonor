@@ -36,6 +36,7 @@ void main() {
   setUpAll(() async {
     await Firebase.initializeApp();
   });
+
   group("Login Page Tests", () {
     testWidgets("Check if Login Page shows up", (tester) async {
       await tester.pumpWidget(createLoginPageDemoScreen());

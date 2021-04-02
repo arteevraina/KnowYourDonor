@@ -31,9 +31,6 @@ class _DonateBloodState extends State<DonateBlood> {
     // Provider for DonorRepository.
     DonorRepository donorProvider = Provider.of(context);
 
-    // Get the user email ID.
-    var email = Provider.of<AuthProvider>(context).user.email;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -156,6 +153,10 @@ class _DonateBloodState extends State<DonateBlood> {
                                 /// Create [instance] of [Donor Model]
                                 /// and then post it using [DonorRepository]
                                 /// function.
+                                // Get the user email ID.
+                                var email = Provider.of<AuthProvider>(context)
+                                    .user
+                                    .email;
                                 Donor donor = Donor(
                                   _donorNameController.text,
                                   email,
