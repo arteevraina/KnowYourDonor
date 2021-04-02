@@ -1,18 +1,14 @@
-<p align="center">
-  <img src="./assets/main.gif" width="400" height="300" title="hover text">
-</p>
-
-# Know Your Donor
+# Know Your Donor 🩸
 
 Blood Donation app made for connecting donor with the patient. During this harsh times of pandemic, normal health care services are facing a set back and Covid-19 is on the top of the priority of health care departments. Also, people are now afraid to leave visit hospitals to arrange blood as they fear they might catch Covid-19. So, to make their life easier idea of Know Your Donor's development is started.
 
-## Tech Stack:
+## Tech Stack 💻
 
 - Flutter
 - Dart
 - Firebase
 
-## Features:
+## Features 🚀
 
 - Email Authentication using Firebase.
 - Find donors and recipients in your near by area.
