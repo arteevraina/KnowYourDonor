@@ -14,23 +14,24 @@ Blood Donation app made for connecting donor with the patient. During this harsh
 
 ## Features:
 
-* Email Authentication using Firebase.
-* Find donors and recipients in your near by area.
-* Volunteer as a Blood Donor or open a request for blood units.
+- Email Authentication using Firebase.
+- Find donors and recipients in your near by area.
+- Volunteer as a Blood Donor or open a request for blood units.
 
 Feel free to open an issue if you have something in mind, it might make a large impact 💓
 
 ## Screenshots 👀 :
 
 <p align="center">
-  <img src="readme_pictures/login.jpg" height="500px" width="230px">
-  <img src="readme_pictures/home_page.jpg" height="500px" width="230px">
-  <img src="readme_pictures/donor_form.jpg" height="500px" width="230px">
-  <img src="readme_pictures/dialog.jpg" height="500px" width="230px">
-  <img src="readme_pictures/seeker_map.jpg" height="500px" width="230px">
-  <img src="readme_pictures/side_drawer.jpg" height="500px" width="230px">
-  <img src="readme_pictures/seeker_form.jpg" height="500px" width="230px">
-
+  <img src="readme_pictures/login.jpg" width="256" hspace="4">
+  <img src="readme_pictures/register.jpg" width="256" hspace="4">
+  <img src="readme_pictures/home_page.jpg" width="256" hspace="4">
+  <img src="readme_pictures/donor_form.jpg" width="256" hspace="4">
+  <img src="readme_pictures/seeker_form.jpg" width="256" hspace="4">
+  <img src="readme_pictures/seeker_map.jpg" width="256" hspace="4">
+  <img src="readme_pictures/side_drawer.jpg" width="256" hspace="4">
+  <img src="readme_pictures/donor_box.jpg" width="256" hspace="4">
+  <img src="readme_pictures/seeker_box.jpg" width="256" hspace="4">
 
 
 ## How to setup locally ?
