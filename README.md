@@ -1,6 +1,20 @@
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
+<p>
+  <img src="https://img.shields.io/github/issues/arteevraina/KnowYourDonor">
+  <img src="https://img.shields.io/github/forks/arteevraina/KnowYourDonor">
+  <img src="https://img.shields.io/github/stars/arteevraina/KnowYourDonor">
+  <img src="https://img.shields.io/github/license/arteevraina/KnowYourDonor">
+  <img src="https://img.shields.io/github/contributors/arteevraina/KnowYourDonor">
+</p>
+
+
+
 # Know Your Donor 🩸
 
-Blood Donation app made for connecting donor with the patient. During this harsh times of pandemic, normal health care services are facing a set back and Covid-19 is on the top of the priority of health care departments. Also, people are now afraid to leave visit hospitals to arrange blood as they fear they might catch Covid-19. So, to make their life easier idea of Know Your Donor's development is started.
+Blood Donation app made for connecting donor with the patient. During this harsh times of pandemic, normal health care services are facing a set back and Covid-19 is on the top of the priority of health care departments. Also, people are now afraid to leave visit hospitals to arrange blood as they fear they might catch Covid-19. So, to make their life easier Know Your Donor has been developed.
 
 ## Tech Stack 💻
 
@@ -17,7 +31,7 @@ Blood Donation app made for connecting donor with the patient. During this harsh
 
 Feel free to open an issue if you have something in mind, it might make a large impact 💓
 
-## Screenshots 👀 :
+## Screenshots 👀 
 
 <p align="center">
   <img src="readme_pictures/login.jpg" width="256" hspace="4">
