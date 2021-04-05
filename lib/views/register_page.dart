@@ -1,7 +1,10 @@
+// Library imports.
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+// Local imports.
 import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/components/textbox.dart';
 import 'package:knowyourdonor/components/button.dart';

@@ -1,5 +1,8 @@
+// Library imports.
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+// Local imports.
 import 'package:knowyourdonor/constants/colors.dart';
 
 TextStyle smallTextStyle() {

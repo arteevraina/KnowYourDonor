@@ -1,5 +1,7 @@
-// Units tests for validators.
+// Library imports.
 import 'package:flutter_test/flutter_test.dart';
+
+// Local imports.
 import 'package:knowyourdonor/constants/validators.dart';
 
 void main() {

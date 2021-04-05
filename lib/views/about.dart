@@ -1,8 +1,11 @@
+// Library imports.
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+// Local imports.
 import 'package:knowyourdonor/components/appbar.dart';
 
 class About extends StatelessWidget {

@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:knowyourdonor/constants/colors.dart';
+// Library imports.
 import 'dart:math';
+import 'package:flutter/material.dart';
+
+// Local imports.
+import 'package:knowyourdonor/constants/colors.dart';
 
 // ignore: non_constant_identifier_names
 class Loader extends StatefulWidget {

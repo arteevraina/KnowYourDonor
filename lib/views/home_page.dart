@@ -1,6 +1,9 @@
+// Library imports.
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
+// Local imports.
 import 'package:knowyourdonor/constants/colors.dart';
 import 'package:knowyourdonor/constants/text_styles.dart';
 import 'package:knowyourdonor/views/donate_blood_form.dart';

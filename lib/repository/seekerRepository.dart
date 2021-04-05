@@ -1,5 +1,8 @@
+// Library imports.
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+
+// Local imports.
 import 'package:knowyourdonor/models/Seeker.dart';
 
 /// Different Submission states.

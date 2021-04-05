@@ -1,3 +1,4 @@
+// Library imports.
 import 'package:flutter/widgets.dart';
 
 class BottomNavigationBarProvider with ChangeNotifier {

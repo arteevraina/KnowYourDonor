@@ -1,12 +1,15 @@
+// Library imports.
 import 'dart:async';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+// Local imports
 import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/components/loader.dart';
 import 'package:knowyourdonor/components/alertButton.dart';

@@ -1,8 +1,11 @@
+// Library imports.
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:geocoding/geocoding.dart';
+
+// Local imports.
 import 'package:knowyourdonor/models/Seeker.dart';
 import 'package:knowyourdonor/provider/auth_provider.dart';
 import 'package:knowyourdonor/components/loader.dart';

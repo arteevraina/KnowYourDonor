@@ -1,6 +1,9 @@
+// Library imports.
 import 'package:flutter/material.dart';
+
+// Local imports.
 import 'package:knowyourdonor/constants/text_styles.dart';
-import 'textbox.dart';
+import 'package:knowyourdonor/components/textbox.dart';
 
 // ignore: non_constant_identifier_names
 Widget AlertBox(
