@@ -164,6 +164,10 @@ See the [contributor's guide!](CONTRIBUTING.md)
 
 If you have general question about the project. Feel free to join [discord server](https://discord.gg/8CsHncucds).
 
+## License
+
+[MIT](LICENSE) © 2021
+
 ### Learn Flutter ?
 
 Follow this [link](https://flutter.dev/)
